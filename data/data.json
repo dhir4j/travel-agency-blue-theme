@@ -1,0 +1,650 @@
+[
+    {
+        "Country": "United Arab Emirates",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/AE",
+        "Price": "₹6,250",
+        "Get on": "2 days",
+        "category": "week",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/AE.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "60 days",
+            "Entry": "Single",
+            "Method": "Paperless"
+        }
+    },
+    {
+        "Country": "Thailand",
+        "ImageURL": "https://media.atlys.com/b2c/country_thumbnails/tr:w-800/TH",
+        "Price": "₹1000",
+        "Get on": "0 days",
+        "category": "instant",
+        "Required Docs": [],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/TH.mp4?tr=f-webm",
+        "Visa Info": {
+            "Type": "TDAC",
+            "Length of Stay": "90 days",
+            "Validity": "90 days",
+            "Entry": "Single",
+            "Method": "Paperless"
+        }
+    },
+    {
+        "Country": "Switzerland",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/CH",
+        "Price": "₹5,640",
+        "Get on": "28 days",
+        "category": "month",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "upto 90 Days",
+            "Type": "Short-term",
+            "Entry": "Multiple"
+        }
+    },
+    {
+        "Country": "Vietnam",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/VN",
+        "Price": "₹2,500",
+        "Get on": "4 days",
+        "category": "week",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/VN.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "30 days",
+            "Entry": "Single",
+            "Visa Accepted At": "All Ports of Entry",
+            "Method": "Paperless"
+        }
+    },
+    {
+        "Country": "Indonesia",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/ID",
+        "Price": "₹3,000",
+        "Get on": "1 days",
+        "category": "week",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/ID.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "90 days",
+            "Entry": "Single",
+            "Method": "Paperless"
+        }
+    },
+    {
+        "Country": "Oman",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/OM",
+        "Price": "₹2,500",
+        "Get on": "2 days",
+        "category": "week",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/OM.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "10 days",
+            "Validity": "30 days",
+            "Entry": "Single",
+            "Method": "Paperless"
+        }
+    },
+    {
+        "Country": "United States",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/US",
+        "Price": "₹999",
+        "Get on": "45 days",
+        "category": "month",
+        "Required Docs": [],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/US.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "180 days",
+            "Validity": "10 years",
+            "Entry": "Multiple"
+        }
+    },
+    {
+        "Country": "Hong Kong SAR China",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/HK",
+        "Price": "₹1000",
+        "Get on": "0 days",
+        "category": "instant",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/HK.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "14 days",
+            "Validity": "180 days",
+            "Entry": "Multiple",
+            "Method": "Paperless"
+        }
+    },
+    {
+        "Country": "Egypt",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/EG",
+        "Price": "₹2,100",
+        "Get on": "3 days",
+        "category": "week",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/EG.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "90 days",
+            "Entry": "Single",
+            "Visa Accepted At": "All Ports of Entry",
+            "Method": "Paperless"
+        }
+    },
+    {
+        "Country": "Sri Lanka",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/LK",
+        "Price": "₹1000",
+        "Get on": "1 days",
+        "category": "week",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/LK.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "180 days",
+            "Entry": "Single",
+            "Method": "Paperless"
+        }
+    },
+    {
+        "Country": "Georgia",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/GE",
+        "Price": "₹3,000",
+        "Get on": "10 days",
+        "category": "month",
+        "Required Docs": [
+            "Photo",
+            "Passport",
+            "Bank Statement"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/GE.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "120 days",
+            "Entry": "Multiple",
+            "Method": "Paperless"
+        }
+    },
+    {
+        "Country": "Azerbaijan",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/AZ",
+        "Price": "₹2,272",
+        "Get on": "3 days",
+        "category": "week",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/AZ.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "90 days",
+            "Entry": "Single",
+            "Method": "Paperless"
+        }
+    },
+    {
+        "Country": "France",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/FR",
+        "Price": "₹4,997",
+        "Get on": "28 days",
+        "category": "month",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "upto 90 Days",
+            "Type": "Short-term",
+            "Entry": "Multiple"
+        }
+    },
+    {
+        "Country": "Malaysia",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/MY",
+        "Price": "₹1000",
+        "Get on": "1 days",
+        "category": "week",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/MY.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "30 days",
+            "Entry": "Single",
+            "Method": "Paperless"
+        }
+    },
+    {
+        "Country": "United Kingdom",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/GB",
+        "Price": "₹20,800",
+        "Get on": "35 days",
+        "category": "month",
+        "Required Docs": [],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/GB.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "180 days",
+            "Validity": "180 days",
+            "Entry": "Single"
+        }
+    },
+    {
+        "Country": "Australia",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/AU",
+        "Price": "₹11,500",
+        "Get on": "23 days",
+        "category": "month",
+        "Required Docs": [
+            "Passport",
+            "Photo",
+            "Bank Statement",
+            "Income Tax Return (ITR)"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/AU.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "90 days",
+            "Validity": "3 years",
+            "Entry": "Multiple",
+            "Method": "Paperless"
+        }
+    },
+    {
+        "Country": "Italy",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/IT",
+        "Price": "₹3,490",
+        "Get on": "141 days",
+        "category": "month",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "upto 90 Days",
+            "Type": "Short-term",
+            "Entry": "Multiple"
+        }
+    },
+    {
+        "Country": "Japan",
+        "ImageURL": "https://media.atlys.com/b2c/country_thumbnails/tr:w-800/JP",
+        "Price": "₹3,590",
+        "Get on": "17 days",
+        "category": "month",
+        "Required Docs": [],
+        "Video URL": "https://media.atlys.com/b2c/clp/Japan%20CLP/japan-clp-hero.mp4?updatedAt=1737978971776",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "Upto 30 days",
+            "Validity": "Upto 90 days",
+            "Entry": "Multiple"
+        }
+    },
+    {
+        "Country": "China",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/CN",
+        "Price": "₹11,000",
+        "Get on": "16 days",
+        "category": "month",
+        "Required Docs": [
+            "Photo",
+            "Passport",
+            "Bank Statement",
+            "Income Tax Return (ITR)"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/CN.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "90 days",
+            "Entry": "Single"
+        }
+    },
+    {
+        "Country": "Germany",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/DE",
+        "Price": "₹4,756",
+        "Get on": "42 days",
+        "category": "month",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "upto 90 Days",
+            "Type": "Short-term",
+            "Entry": "Multiple"
+        }
+    },
+    {
+        "Country": "Greece",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/GR",
+        "Price": "₹4,850",
+        "Get on": "28 days",
+        "category": "month",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "upto 90 Days",
+            "Type": "Short-term",
+            "Entry": "Multiple"
+        }
+    },
+    {
+        "Country": "South Korea",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/KR",
+        "Price": "₹6,430",
+        "Get on": "21 days",
+        "category": "month",
+        "Required Docs": [
+            "Photo",
+            "Passport",
+            "Flight Details",
+            "Hotel Details",
+            "Bank Statement"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/KR.mp4?tr=f-webm",
+        "Visa Info": {}
+    },
+    {
+        "Country": "Spain",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/ES",
+        "Price": "₹9,590",
+        "Get on": "42 days",
+        "category": "month",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "upto 90 Days",
+            "Type": "Short-term",
+            "Entry": "Multiple"
+        }
+    },
+    {
+        "Country": "Canada",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/CA",
+        "Price": "₹19,000",
+        "Get on": "92 days",
+        "category": "month",
+        "Required Docs": [],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/CA.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "180 days",
+            "Validity": "10 years",
+            "Entry": "Multiple"
+        }
+    },
+    {
+        "Country": "Austria",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/AT",
+        "Price": "₹5,224",
+        "Get on": "28 days",
+        "category": "month",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "upto 90 Days",
+            "Type": "Short-term",
+            "Entry": "Multiple"
+        }
+    },
+    {
+        "Country": "Netherlands",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/NL",
+        "Price": "₹4,455",
+        "Get on": "28 days",
+        "category": "month",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "upto 90 Days",
+            "Type": "Short-term",
+            "Entry": "Multiple"
+        }
+    },
+    {
+        "Country": "Russia",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/RU",
+        "Price": "₹4,500",
+        "Get on": "8 days",
+        "category": "month",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/RU.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "16 days",
+            "Validity": "60 days",
+            "Entry": "Single",
+            "Method": "Paperless"
+        }
+    },
+    {
+        "Country": "New Zealand",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/NZ",
+        "Price": "₹23,100",
+        "Get on": "25 days",
+        "category": "month",
+        "Required Docs": [
+            "Photo",
+            "Passport",
+            "Bank Statement",
+            "Income Tax Return (ITR)"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/NZ.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "180 days",
+            "Validity": "1 years",
+            "Entry": "Single",
+            "Method": "Paperless"
+        }
+    },
+    {
+        "Country": "Armenia",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/AM",
+        "Price": "₹773",
+        "Get on": "8 days",
+        "category": "month",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/AM.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "21 days",
+            "Validity": "90 days",
+            "Entry": "Single",
+            "Method": "Paperless"
+        }
+    },
+    {
+        "Country": "Taiwan",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/TW",
+        "Price": "₹1000",
+        "Get on": "1 days",
+        "category": "week",
+        "Required Docs": [],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/TW.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "14 days",
+            "Validity": "90 days",
+            "Entry": "Multiple",
+            "Method": "Paperless"
+        }
+    },
+    {
+        "Country": "Philippines",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/PH",
+        "Price": "₹5,720",
+        "Get on": "30 days",
+        "category": "month",
+        "Required Docs": [
+            "Photo",
+            "Passport",
+            "Flight Details",
+            "Hotel Details",
+            "Bank Statement",
+            "Income Tax Return (ITR)"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/PH.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "90 days",
+            "Entry": "Single",
+            "Method": "Paperless"
+        }
+    },
+    {
+        "Country": "Belgium",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/BE",
+        "Price": "₹5,425",
+        "Get on": "42 days",
+        "category": "month",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "upto 90 Days",
+            "Type": "Short-term",
+            "Entry": "Multiple"
+        }
+    },
+    {
+        "Country": "Brazil",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/BR",
+        "Price": "₹12,990",
+        "Get on": "63 days",
+        "category": "month",
+        "Required Docs": [
+            "Photo",
+            "Passport",
+            "Flight Details",
+            "Bank Statement",
+            "Income Tax Return (ITR)",
+            "Hotel Details"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/BR.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "90 days",
+            "Entry": "Single"
+        }
+    },
+    {
+        "Country": "Qatar",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/QA",
+        "Price": "₹900",
+        "Get on": "3 days",
+        "category": "week",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/QA.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "90 days",
+            "Entry": "Single",
+            "Method": "Paperless"
+        }
+    },
+    {
+        "Country": "Finland",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/FI",
+        "Price": "₹5,573",
+        "Get on": "28 days",
+        "category": "month",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "upto 90 Days",
+            "Type": "Short-term",
+            "Entry": "Multiple"
+        }
+    },
+    {
+        "Country": "Hungary",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/HU",
+        "Price": "₹4,734",
+        "Get on": "28 days",
+        "category": "month",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "upto 90 Days",
+            "Type": "Short-term",
+            "Entry": "Multiple"
+        }
+    },
+    {
+        "Country": "Iceland",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/IS",
+        "Price": "₹5,585",
+        "Get on": "28 days",
+        "category": "month",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "upto 90 Days",
+            "Type": "Short-term",
+            "Entry": "Multiple"
+        }
+    },
+    {
+        "Country": "Croatia",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/HR",
+        "Price": "₹4,950",
+        "Get on": "28 days",
+        "category": "month",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "upto 90 Days",
+            "Type": "Short-term",
+            "Entry": "Multiple"
+        }
+    }
+]
