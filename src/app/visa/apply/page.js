@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import GoTop from '@/components/GoTop'
 import visaData from '../../../../data/data.json'
 
-export default function VisaApplicationPage() {
+function VisaApplicationForm() {
   const searchParams = useSearchParams()
   const country = searchParams.get('country')
 
@@ -458,5 +458,13 @@ export default function VisaApplicationPage() {
       <Footer />
       <GoTop />
     </>
+  )
+}
+
+export default function VisaApplicationPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <VisaApplicationForm />
+    </Suspense>
   )
 }
