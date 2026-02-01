@@ -1,11 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { authAPI, session } from '@/lib/api'
 import Link from 'next/link'
 
-export default function SignupPage() {
+function SignupForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [formData, setFormData] = useState({
@@ -114,5 +114,13 @@ export default function SignupPage() {
         Already have an account? <Link href="/auth/login">Login</Link>
       </p>
     </div>
+  )
+}
+
+export default function SignupPage() {
+  return (
+    <Suspense fallback={<div style={{maxWidth: '400px', margin: '100px auto', padding: '20px'}}>Loading...</div>}>
+      <SignupForm />
+    </Suspense>
   )
 }
