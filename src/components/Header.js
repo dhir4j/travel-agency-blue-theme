@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { session } from '@/lib/api'
 
 export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +16,12 @@ export default function Header() {
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    // Check if user is logged in
+    const currentUser = session.getUser()
+    setUser(currentUser)
   }, [])
 
   const toggleNav = () => {
@@ -101,7 +109,17 @@ export default function Header() {
               </ul>
             </nav>
 
-            <button className="btn btn-primary">Book Now</button>
+            {user ? (
+              <Link href="/dashboard" className="btn btn-primary" style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+                <ion-icon name="person-circle-outline"></ion-icon>
+                <span>{user.first_name}</span>
+              </Link>
+            ) : (
+              <Link href="/auth/login" className="btn btn-primary" style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+                <ion-icon name="log-in-outline"></ion-icon>
+                <span>Login</span>
+              </Link>
+            )}
           </div>
         </div>
       </header>

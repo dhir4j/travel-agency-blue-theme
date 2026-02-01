@@ -1,6 +1,6 @@
 // API Integration Layer for Waynex Travels
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://server.waynextravels.com/api'
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://www.server.waynextravels.com/api'
 
 // Helper function to handle API responses
 async function handleResponse(response) {
@@ -90,7 +90,7 @@ export const bookingsAPI = {
 
   getAll: async (filters = {}) => {
     const params = new URLSearchParams(filters)
-    const response = await fetch(`${API_BASE_URL}/bookings?${params}`)
+    const response = await fetch(`${API_BASE_URL}/bookings/?${params}`)
     return handleResponse(response)
   },
 
