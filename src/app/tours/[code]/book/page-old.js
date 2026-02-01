@@ -1,25 +1,42 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import GoTop from '@/components/GoTop'
-import { toursAPI, bookingsAPI, session } from '@/lib/api'
+import toursData from '../../../../../data/waynex_tours_complete.json'
 import { extractCodeFromSlug } from '@/utils/tourUtils'
 import styles from './booking.module.css'
 
+function findTourByCode(code) {
+  const { domestic, international } = toursData.data
+
+  for (const region in domestic) {
+    const tour = domestic[region].find(t => t.code === code)
+    if (tour) return { ...tour, type: 'domestic', region }
+  }
+
+  for (const region in international) {
+    const tour = international[region].find(t => t.code === code)
+    if (tour) return { ...tour, type: 'international', region }
+  }
+
+  return null
+}
+
 function BookingFormContent({ code }) {
-  const router = useRouter()
-  const [tour, setTour] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [submitting, setSubmitting] = useState(false)
-  const [error, setError] = useState(null)
-  const [user, setUser] = useState(null)
+  const tour = findTourByCode(code)
+
+  if (!tour) {
+    notFound()
+  }
 
   const [formData, setFormData] = useState({
     // Travel Details
+    tourName: tour.name,
+    tourCode: tour.code,
     numberOfTravelers: '1',
     travelDay: '',
     travelMonth: '',
@@ -49,46 +66,6 @@ function BookingFormContent({ code }) {
     acceptTerms: false
   })
 
-  // Load tour and user data
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        // Load tour
-        const tourData = await toursAPI.getByCode(code)
-        setTour(tourData.tour)
-
-        // Check if user is logged in
-        const currentUser = session.getUser()
-        if (currentUser) {
-          setUser(currentUser)
-          // Pre-fill form with user data
-          setFormData(prev => ({
-            ...prev,
-            fullName: `${currentUser.first_name} ${currentUser.last_name}`,
-            email: currentUser.email,
-            phone: currentUser.phone || '',
-            address: currentUser.address?.street || '',
-            city: currentUser.address?.city || '',
-            state: currentUser.address?.state || '',
-            pincode: currentUser.address?.pincode || '',
-          }))
-        }
-
-        setLoading(false)
-      } catch (err) {
-        console.error('Error loading tour:', err)
-        setError(err.message)
-        setLoading(false)
-      }
-    }
-
-    loadData()
-  }, [code])
-
-  if (loading) return <div>Loading...</div>
-  if (error) return <div>Error: {error}</div>
-  if (!tour) return notFound()
-
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target
     setFormData(prev => ({
@@ -97,53 +74,10 @@ function BookingFormContent({ code }) {
     }))
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    setSubmitting(true)
-    setError(null)
-
-    try {
-      // Check if user is logged in
-      if (!user) {
-        // Save form data and redirect to signup
-        localStorage.setItem('pending_booking', JSON.stringify(formData))
-        localStorage.setItem('pending_tour_code', code)
-        router.push('/auth/signup?redirect=booking')
-        return
-      }
-
-      // Create travel date
-      const travelDate = new Date(
-        parseInt(formData.travelYear),
-        parseInt(formData.travelMonth) - 1,
-        parseInt(formData.travelDay)
-      )
-
-      // Prepare booking data
-      const bookingData = {
-        user_id: user.id,
-        tour_code: tour.code,
-        package_name: tour.name,
-        package_type: tour.tour_type,
-        destination: tour.destinations || tour.name,
-        travel_date: travelDate.toISOString().split('T')[0],
-        num_adults: parseInt(formData.numberOfTravelers),
-        num_children: 0,  // You can add children field if needed
-        price_per_person: tour.price,
-        special_requests: formData.specialRequests,
-      }
-
-      // Create booking
-      const result = await bookingsAPI.create(bookingData)
-
-      // Redirect to checkout with booking ID
-      router.push(`/checkout?booking_id=${result.booking.id}`)
-
-    } catch (err) {
-      setError(err.message)
-      setSubmitting(false)
-      alert(`Error: ${err.message}`)
-    }
+    console.log('Booking submitted:', formData)
+    alert('Thank you for your booking! We will contact you shortly.')
   }
 
   return (
@@ -156,11 +90,6 @@ function BookingFormContent({ code }) {
               <div className={styles.heroBadge}>Book Your Tour</div>
               <h1 className={styles.heroTitle}>{tour.name} - Booking Application</h1>
               <p className={styles.heroText}>Fill out the form below to reserve your spot on this amazing journey</p>
-              {!user && (
-                <p style={{color: '#ffa502', marginTop: '10px'}}>
-                  ⚠️ You'll need to create an account to complete this booking
-                </p>
-              )}
             </div>
           </div>
         </section>
@@ -179,8 +108,9 @@ function BookingFormContent({ code }) {
                         <label className={styles.fieldLabel}>Tour Name</label>
                         <input
                           type="text"
+                          name="tourName"
                           className={styles.formInput}
-                          value={tour.name}
+                          value={formData.tourName}
                           readOnly
                           style={{ backgroundColor: '#f5f5f5', cursor: 'not-allowed' }}
                         />
@@ -189,8 +119,9 @@ function BookingFormContent({ code }) {
                         <label className={styles.fieldLabel}>Tour Code</label>
                         <input
                           type="text"
+                          name="tourCode"
                           className={styles.formInput}
-                          value={tour.code}
+                          value={formData.tourCode}
                           readOnly
                           style={{ backgroundColor: '#f5f5f5', cursor: 'not-allowed' }}
                         />
@@ -235,7 +166,7 @@ function BookingFormContent({ code }) {
                     </div>
                   </div>
 
-                  {/* Contact Details - Same as before */}
+                  {/* Contact Details */}
                   <div className={styles.formSectionBlock}>
                     <h3 className={styles.sectionHeading}>Contact Details</h3>
 
@@ -339,11 +270,44 @@ function BookingFormContent({ code }) {
                     </div>
                   </div>
 
-                  {/* Special Requests */}
+                  {/* Preferences */}
                   <div className={styles.formSectionBlock}>
-                    <h3 className={styles.sectionHeading}>Special Requests (Optional)</h3>
+                    <h3 className={styles.sectionHeading}>Travel Preferences</h3>
+
                     <div className={styles.formRow}>
                       <div className={styles.formGroup}>
+                        <label className={styles.fieldLabel}>Hotel Preference</label>
+                        <select
+                          name="hotelPreference"
+                          className={styles.formSelect}
+                          value={formData.hotelPreference}
+                          onChange={handleInputChange}
+                        >
+                          <option value="Standard">Standard</option>
+                          <option value="Deluxe">Deluxe</option>
+                          <option value="Premium">Premium</option>
+                          <option value="Luxury">Luxury</option>
+                        </select>
+                      </div>
+                      <div className={styles.formGroup}>
+                        <label className={styles.fieldLabel}>Meal Preference</label>
+                        <select
+                          name="mealPreference"
+                          className={styles.formSelect}
+                          value={formData.mealPreference}
+                          onChange={handleInputChange}
+                        >
+                          <option value="Vegetarian">Vegetarian</option>
+                          <option value="Non-Vegetarian">Non-Vegetarian</option>
+                          <option value="Vegan">Vegan</option>
+                          <option value="Jain">Jain</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className={styles.formRow}>
+                      <div className={styles.formGroup}>
+                        <label className={styles.fieldLabel}>Special Requests (Optional)</label>
                         <textarea
                           name="specialRequests"
                           className={styles.formTextarea}
@@ -351,6 +315,47 @@ function BookingFormContent({ code }) {
                           value={formData.specialRequests}
                           onChange={handleInputChange}
                           rows="4"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Emergency Contact */}
+                  <div className={styles.formSectionBlock}>
+                    <h3 className={styles.sectionHeading}>Emergency Contact</h3>
+
+                    <div className={styles.formRow}>
+                      <div className={styles.formGroup}>
+                        <input
+                          type="text"
+                          name="emergencyName"
+                          placeholder="Emergency Contact Name *"
+                          className={styles.formInput}
+                          value={formData.emergencyName}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                      <div className={styles.formGroup}>
+                        <input
+                          type="tel"
+                          name="emergencyPhone"
+                          placeholder="Emergency Contact Phone *"
+                          className={styles.formInput}
+                          value={formData.emergencyPhone}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                      <div className={styles.formGroup}>
+                        <input
+                          type="text"
+                          name="emergencyRelation"
+                          placeholder="Relationship *"
+                          className={styles.formInput}
+                          value={formData.emergencyRelation}
+                          onChange={handleInputChange}
+                          required
                         />
                       </div>
                     </div>
@@ -370,9 +375,9 @@ function BookingFormContent({ code }) {
                     </label>
 
                     <div className={styles.submitButtons}>
-                      <button type="submit" className={styles.submitBtn} disabled={submitting}>
+                      <button type="submit" className={styles.submitBtn}>
                         <ion-icon name="paper-plane-outline"></ion-icon>
-                        {submitting ? 'Processing...' : (user ? 'Proceed to Payment' : 'Sign Up & Book')}
+                        Submit Booking
                       </button>
                     </div>
                   </div>
@@ -397,7 +402,7 @@ function BookingFormContent({ code }) {
                   </div>
                   <div className={styles.sidebarItem}>
                     <h4>Tour Type</h4>
-                    <p className={styles.highlight}>{tour.tour_type === 'domestic' ? 'Domestic' : 'International'}</p>
+                    <p className={styles.highlight}>{tour.type === 'domestic' ? 'Domestic' : 'International'}</p>
                   </div>
                 </div>
               </div>
@@ -415,6 +420,12 @@ export default function BookingPage({ params }) {
   const code = extractCodeFromSlug(params.code)
 
   return (
-    <BookingFormContent code={code} />
+    <Suspense fallback={<div>Loading...</div>}>
+      <BookingFormContent code={code} />
+    </Suspense>
   )
+}
+
+function Suspense({ children, fallback }) {
+  return children
 }
