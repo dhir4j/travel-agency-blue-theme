@@ -143,9 +143,11 @@ export const session = {
   },
 }
 
-export default {
+const api = {
   authAPI,
   userAPI,
   bookingsAPI,
   session,
 }
+
+export default api
