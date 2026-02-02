@@ -1,0 +1,553 @@
+/* Tour Detail Page - Modern Design (Matching Visa Page) */
+
+.heroSection {
+  padding: 150px 0 60px;
+  background: linear-gradient(to bottom,
+    hsl(214, 57%, 51%) 0%,
+    hsl(214, 57%, 51%) 30%,
+    hsla(214, 57%, 85%, 0.3) 100%
+  );
+  margin-top: 0;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 80px;
+}
+
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 50%, hsla(214, 57%, 51%, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, hsla(197, 100%, 36%, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, hsla(214, 72%, 33%, 0.15) 0%, transparent 50%);
+  background-size: 300% 300%;
+  animation: gradient-wave 20s ease infinite;
+  opacity: 0.8;
+}
+
+@keyframes gradient-wave {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.heroMediaContainer {
+  position: relative;
+  border-radius: 25px;
+  overflow: hidden;
+  height: 500px;
+  box-shadow: 0 20px 60px hsla(0, 0%, 0%, .15);
+  margin-top: 40px;
+}
+
+.heroImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.heroImage.active {
+  opacity: 1;
+}
+
+/* Dark overlay for better text readability - Matching visa page */
+.heroMediaContainer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    hsla(0, 0%, 0%, .3) 0%,
+    hsla(0, 0%, 0%, .4) 50%,
+    hsla(0, 0%, 0%, .5) 100%);
+  z-index: 1;
+}
+
+.heroContentCentered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 2;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.sliderButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.sliderButton:hover {
+  background: white;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.sliderButton.prev {
+  left: 20px;
+}
+
+.sliderButton.next {
+  right: 20px;
+}
+
+.tourTitle {
+  color: white;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 600;
+  margin-bottom: 25px;
+  text-shadow: 0 4px 20px hsla(0, 0%, 0%, .5);
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.metaInfo {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: hsla(0, 0%, 0%, .6);
+  backdrop-filter: blur(10px);
+  padding: 14px 28px;
+  border-radius: 50px;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Main Content */
+.mainContent {
+  padding: 60px 0;
+  background: #f8f9fa;
+}
+
+.contentLayout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.contentMain {
+  min-width: 0;
+}
+
+.detailCard {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.cardTitle {
+  color: hsl(208, 97%, 12%);
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 3px solid hsl(214, 57%, 51%);
+  letter-spacing: -0.5px;
+}
+
+/* Overview Grid */
+.overviewGrid {
+  display: grid;
+  gap: 16px;
+}
+
+.overviewItem {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.06) 0%, rgba(74, 144, 226, 0.02) 100%);
+  border-radius: 12px;
+  border-left: 4px solid hsl(214, 57%, 51%);
+  transition: all 0.3s ease;
+}
+
+.overviewItem:hover {
+  transform: translateX(6px);
+  box-shadow: 0 4px 16px rgba(74, 144, 226, 0.15);
+}
+
+.overviewIcon {
+  font-size: 28px;
+  color: hsl(214, 57%, 51%);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.overviewContent {
+  flex: 1;
+}
+
+.overviewLabel {
+  display: block;
+  color: hsl(208, 97%, 12%);
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.overviewValue {
+  color: hsl(225, 8%, 42%);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Feature List */
+.featureList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.featureItem:hover {
+  background: rgba(74, 144, 226, 0.06);
+  transform: translateX(4px);
+}
+
+.featureIcon {
+  color: hsl(197, 100%, 36%);
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Hotels List */
+.hotelsList {
+  display: grid;
+  gap: 16px;
+}
+
+.hotelItem {
+  display: flex;
+  gap: 16px;
+  padding: 24px;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.hotelIcon {
+  font-size: 28px;
+  color: hsl(214, 57%, 51%);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.hotelInfo {
+  flex: 1;
+}
+
+.hotelPlace {
+  color: hsl(208, 97%, 12%);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hotelName {
+  color: hsl(225, 8%, 42%);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.nightsBadge {
+  display: inline-block;
+  background: hsl(214, 57%, 51%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Sidebar */
+.sidebar {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.priceCard {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  margin-bottom: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.priceDisplay {
+  text-align: center;
+  padding: 28px 24px;
+  background: linear-gradient(135deg, hsl(214, 57%, 51%) 0%, hsl(214, 72%, 33%) 100%);
+  border-radius: 12px;
+  margin-bottom: 24px;
+  box-shadow: 0 6px 20px rgba(74, 144, 226, 0.35);
+}
+
+.priceLabel {
+  display: block;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  opacity: 0.95;
+}
+
+.priceAmount {
+  display: block;
+  color: white;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  letter-spacing: -1.5px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.priceSubtext {
+  display: block;
+  color: white;
+  font-size: 14px;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+.ctaButton {
+  width: 100%;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 16px;
+}
+
+.primaryButton {
+  background: hsl(214, 57%, 51%);
+  color: white;
+  box-shadow: 0 4px 16px rgba(74, 144, 226, 0.35);
+}
+
+.primaryButton:hover {
+  background: hsl(214, 72%, 33%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(74, 144, 226, 0.45);
+}
+
+.secondaryButton {
+  background: transparent;
+  color: hsl(214, 57%, 51%);
+  border: 2px solid hsl(214, 57%, 51%);
+}
+
+.secondaryButton:hover {
+  background: hsl(214, 57%, 51%);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.quickInfo {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 2px solid #e9ecef;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  color: hsl(225, 8%, 42%);
+  font-size: 15px;
+}
+
+.infoIcon {
+  font-size: 22px;
+  color: hsl(214, 57%, 51%);
+}
+
+.helpCard {
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.06) 0%, rgba(74, 144, 226, 0.02) 100%);
+  border-radius: 16px;
+  padding: 32px 28px;
+  text-align: center;
+  border: 1px solid rgba(74, 144, 226, 0.12);
+}
+
+.helpTitle {
+  color: hsl(208, 97%, 12%);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.helpText {
+  color: hsl(225, 8%, 42%);
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.helpLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: hsl(214, 57%, 51%);
+  color: white;
+  padding: 16px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(74, 144, 226, 0.35);
+}
+
+.helpLink:hover {
+  background: hsl(214, 72%, 33%);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 24px rgba(74, 144, 226, 0.45);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .contentLayout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .sidebar {
+    position: static;
+  }
+
+  .heroSection {
+    padding: 120px 0 40px;
+    margin-bottom: 60px;
+  }
+
+  .heroMediaContainer {
+    height: 350px;
+  }
+
+  .tourTitle {
+    font-size: 32px;
+  }
+
+  .detailCard {
+    padding: 28px 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .heroSection {
+    padding: 100px 0 30px;
+  }
+
+  .heroMediaContainer {
+    height: 300px;
+  }
+
+  .tourTitle {
+    font-size: 28px;
+  }
+
+  .metaInfo {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .metaItem {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+
+  .detailCard {
+    padding: 24px 20px;
+    margin-bottom: 24px;
+  }
+
+  .cardTitle {
+    font-size: 22px;
+  }
+
+  .priceCard {
+    padding: 20px;
+  }
+
+  .priceAmount {
+    font-size: 36px;
+  }
+
+  .sliderButton {
+    width: 45px;
+    height: 45px;
+  }
+
+  .sliderButton.prev {
+    left: 10px;
+  }
+
+  .sliderButton.next {
+    right: 10px;
+  }
+}

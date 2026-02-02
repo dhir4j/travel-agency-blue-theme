@@ -1,43 +1,70 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import GoTop from '@/components/GoTop'
 import Link from 'next/link'
 import toursData from '../../../data/waynex_tours_complete.json'
+import { generateTourSlug, getTourImage } from '@/utils/tourUtils'
 
 export default function ToursPage() {
+  const [searchQuery, setSearchQuery] = useState('')
   const [selectedType, setSelectedType] = useState('all')
   const [selectedCategory, setSelectedCategory] = useState('all')
 
-  // Get all tours from JSON
-  const domesticTours = toursData.data.domestic
-  const internationalTours = toursData.data.international
+  // Get all tours from JSON using useMemo
+  const allTours = useMemo(() => {
+    const tours = []
 
-  // Flatten all tours
-  const allTours = []
+    // Add domestic tours
+    if (toursData.data?.domestic) {
+      Object.entries(toursData.data.domestic).forEach(([state, stateTours]) => {
+        stateTours.forEach(tour => {
+          if (tour.code && tour.code.trim() !== '') {
+            tours.push({ ...tour, type: 'domestic', category: state })
+          }
+        })
+      })
+    }
 
-  // Add domestic tours
-  Object.entries(domesticTours).forEach(([state, tours]) => {
-    tours.forEach(tour => {
-      allTours.push({ ...tour, type: 'domestic', category: state })
-    })
-  })
+    // Add international tours
+    if (toursData.data?.international) {
+      Object.entries(toursData.data.international).forEach(([region, regionTours]) => {
+        regionTours.forEach(tour => {
+          if (tour.code && tour.code.trim() !== '') {
+            tours.push({ ...tour, type: 'international', category: region })
+          }
+        })
+      })
+    }
 
-  // Add international tours
-  Object.entries(internationalTours).forEach(([region, tours]) => {
-    tours.forEach(tour => {
-      allTours.push({ ...tour, type: 'international', category: region })
-    })
-  })
+    return tours
+  }, [])
 
   // Filter tours
-  const filteredTours = allTours.filter(tour => {
-    if (selectedType !== 'all' && tour.type !== selectedType) return false
-    if (selectedCategory !== 'all' && tour.category !== selectedCategory) return false
-    return true
-  })
+  const filteredTours = useMemo(() => {
+    let filtered = allTours
+
+    if (selectedType !== 'all') {
+      filtered = filtered.filter(tour => tour.type === selectedType)
+    }
+
+    if (selectedCategory !== 'all') {
+      filtered = filtered.filter(tour => tour.category === selectedCategory)
+    }
+
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase()
+      filtered = filtered.filter(tour =>
+        tour.name?.toLowerCase().includes(q) ||
+        tour.destinations?.toLowerCase().includes(q) ||
+        tour.category?.toLowerCase().includes(q)
+      )
+    }
+
+    return filtered
+  }, [allTours, selectedType, selectedCategory, searchQuery])
 
   // Get categories based on type
   const categories = selectedType === 'domestic'
@@ -50,11 +77,23 @@ export default function ToursPage() {
     <>
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="tours-hero">
+        {/* Hero Section with Search - Matching Visa Page */}
+        <section className="visa-hero-modern">
           <div className="container">
-            <h1 className="tours-hero-title">Explore Our Tours</h1>
-            <p className="tours-hero-subtitle">Discover {toursData.metadata.total_tours}+ amazing destinations worldwide</p>
+            <h1 className="h1 hero-title">Discover Amazing Tours</h1>
+            <p className="tours-hero-subtitle">Explore {toursData.metadata.total_tours}+ incredible destinations worldwide</p>
+            <div className="search-wrapper">
+              <div className="search-box">
+                <ion-icon name="search-outline"></ion-icon>
+                <input
+                  type="text"
+                  placeholder="Search destinations, tours, or regions..."
+                  className="search-input"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </div>
+            </div>
           </div>
         </section>
 
@@ -106,47 +145,52 @@ export default function ToursPage() {
           <div className="container">
             <div className="tours-grid">
               {filteredTours.map((tour) => (
-                <div key={tour.code} className="tour-card">
-                  <div className="tour-card-image">
-                    <img src={tour.card_image} alt={tour.name} />
-                    <div className="tour-card-badge">
+                <Link
+                  href={`/tours/${generateTourSlug(tour.name, tour.code)}`}
+                  key={tour.code}
+                  className="tour-card-premium"
+                >
+                  <div className="tour-image">
+                    <img src={getTourImage(tour)} alt={tour.name} loading="lazy" />
+                    <div className="tour-type-badge">
                       {tour.type === 'domestic' ? 'Domestic' : 'International'}
                     </div>
+                    {tour.duration && (
+                      <div className="tour-duration-badge">
+                        <ion-icon name="time-outline"></ion-icon>
+                        {tour.duration}
+                      </div>
+                    )}
                   </div>
 
-                  <div className="tour-card-content">
-                    <div className="tour-card-category">
+                  <div className="tour-info">
+                    <div className="tour-location">
                       <ion-icon name="location-outline"></ion-icon>
                       <span>{tour.category}</span>
                     </div>
 
-                    <h3 className="tour-card-title">{tour.name}</h3>
+                    <h3>{tour.name}</h3>
 
                     {tour.destinations && (
-                      <p className="tour-card-destinations">{tour.destinations}</p>
+                      <p className="tour-destinations">
+                        {tour.destinations.split(',').slice(0, 3).join(' • ')}
+                      </p>
                     )}
 
-                    <div className="tour-card-info">
-                      {tour.duration && (
-                        <div className="info-item">
-                          <ion-icon name="time-outline"></ion-icon>
-                          <span>{tour.duration}</span>
-                        </div>
-                      )}
+                    <div className="tour-footer">
                       {tour.price && (
-                        <div className="info-item price">
-                          <ion-icon name="cash-outline"></ion-icon>
-                          <span>₹{tour.price.toLocaleString()}</span>
+                        <div className="tour-price">
+                          <span className="price-label">From</span>
+                          <span className="price-value">₹{tour.price.toLocaleString()}</span>
                         </div>
                       )}
+                      <div className="tour-cta">
+                        View Details
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                      </div>
                     </div>
-
-                    <Link href={`/tours/${tour.code}`} className="btn btn-secondary tour-card-btn">
-                      View Details
-                      <ion-icon name="arrow-forward-outline"></ion-icon>
-                    </Link>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
 
@@ -154,7 +198,7 @@ export default function ToursPage() {
               <div className="no-results">
                 <ion-icon name="search-outline"></ion-icon>
                 <h3>No Tours Found</h3>
-                <p>Try adjusting your filters</p>
+                <p>Try adjusting your filters or search query</p>
               </div>
             )}
           </div>
@@ -164,24 +208,11 @@ export default function ToursPage() {
       <GoTop />
 
       <style jsx>{`
-        .tours-hero {
-          padding: 120px 0 60px;
-          background: linear-gradient(135deg, var(--bright-navy-blue) 0%, var(--yale-blue) 100%);
-          text-align: center;
-          color: var(--white);
-        }
-
-        .tours-hero-title {
-          font-family: var(--ff-montserrat);
-          font-size: var(--fs-1);
-          font-weight: var(--fw-700);
-          margin-bottom: 15px;
-        }
-
         .tours-hero-subtitle {
           font-family: var(--ff-poppins);
           font-size: var(--fs-4);
-          opacity: 0.9;
+          opacity: 0.95;
+          margin-bottom: 40px;
         }
 
         .tours-filters {
@@ -252,135 +283,136 @@ export default function ToursPage() {
           gap: 30px;
         }
 
-        .tour-card {
+        .tour-card-premium {
           background: var(--white);
-          border-radius: var(--radius-15);
+          border-radius: var(--radius-25);
           overflow: hidden;
-          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-          transition: var(--transition);
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+          transition: all 0.3s ease;
+          display: block;
+          text-decoration: none;
         }
 
-        .tour-card:hover {
+        .tour-card-premium:hover {
           transform: translateY(-8px);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .tour-card-image {
+        .tour-image {
           position: relative;
-          height: 220px;
+          height: 240px;
           overflow: hidden;
         }
 
-        .tour-card-image img {
+        .tour-image img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          transition: var(--transition);
+          transition: transform 0.3s ease;
         }
 
-        .tour-card:hover .tour-card-image img {
+        .tour-card-premium:hover .tour-image img {
           transform: scale(1.1);
         }
 
-        .tour-card-badge {
+        .tour-type-badge {
           position: absolute;
           top: 15px;
-          right: 15px;
-          background: var(--bright-navy-blue);
-          color: var(--white);
-          padding: 8px 16px;
+          left: 15px;
+          background: rgba(255, 255, 255, 0.95);
+          padding: 6px 15px;
           border-radius: 20px;
-          font-family: var(--ff-poppins);
-          font-size: var(--fs-7);
+          font-size: 12px;
           font-weight: var(--fw-600);
+          color: var(--oxford-blue);
         }
 
-        .tour-card-content {
-          padding: 25px;
-        }
-
-        .tour-card-category {
+        .tour-duration-badge {
+          position: absolute;
+          bottom: 15px;
+          right: 15px;
+          background: rgba(0, 0, 0, 0.7);
+          color: var(--white);
+          padding: 8px 15px;
+          border-radius: 20px;
           display: flex;
           align-items: center;
-          gap: 6px;
-          color: var(--spanish-gray);
-          font-family: var(--ff-poppins);
-          font-size: var(--fs-7);
-          margin-bottom: 12px;
+          gap: 5px;
+          font-size: 13px;
+          backdrop-filter: blur(10px);
         }
 
-        .tour-card-category ion-icon {
-          font-size: 16px;
+        .tour-info {
+          padding: 20px;
         }
 
-        .tour-card-title {
-          font-family: var(--ff-montserrat);
-          font-size: var(--fs-4);
-          font-weight: var(--fw-700);
+        .tour-location {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          color: var(--bright-navy-blue);
+          font-size: 14px;
+          margin-bottom: 10px;
+        }
+
+        .tour-info h3 {
           color: var(--oxford-blue);
-          margin-bottom: 12px;
+          font-size: 18px;
+          font-weight: var(--fw-600);
+          margin-bottom: 10px;
           line-height: 1.4;
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
+          font-family: var(--ff-montserrat);
         }
 
-        .tour-card-destinations {
-          font-family: var(--ff-poppins);
-          font-size: var(--fs-6);
+        .tour-destinations {
           color: var(--spanish-gray);
+          font-size: 14px;
           margin-bottom: 15px;
           display: -webkit-box;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
           overflow: hidden;
-        }
-
-        .tour-card-info {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 15px 0;
-          border-top: 1px solid var(--gainsboro);
-          border-bottom: 1px solid var(--gainsboro);
-          margin-bottom: 20px;
-        }
-
-        .info-item {
-          display: flex;
-          align-items: center;
-          gap: 6px;
           font-family: var(--ff-poppins);
-          font-size: var(--fs-6);
-          color: var(--gunmetal);
         }
 
-        .info-item ion-icon {
-          font-size: 18px;
-          color: var(--bright-navy-blue);
+        .tour-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding-top: 15px;
+          border-top: 1px solid var(--gainsboro);
         }
 
-        .info-item.price {
-          color: var(--bright-navy-blue);
+        .tour-price {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .price-label {
+          font-size: 12px;
+          color: var(--spanish-gray);
+        }
+
+        .price-value {
+          font-size: 20px;
           font-weight: var(--fw-700);
+          color: var(--bright-navy-blue);
         }
 
-        .tour-card-btn {
-          width: 100%;
+        .tour-cta {
           display: flex;
           align-items: center;
-          justify-content: center;
-          gap: 8px;
-          padding: 14px;
+          gap: 5px;
+          color: var(--bright-navy-blue);
+          font-weight: var(--fw-600);
+          font-size: 14px;
         }
 
-        .tour-card-btn ion-icon {
-          font-size: 18px;
+        .tour-cta ion-icon {
           transition: var(--transition);
         }
 
-        .tour-card-btn:hover ion-icon {
+        .tour-card-premium:hover .tour-cta ion-icon {
           transform: translateX(5px);
         }
 
