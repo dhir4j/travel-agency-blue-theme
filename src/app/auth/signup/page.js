@@ -42,7 +42,7 @@ function SignupForm() {
       if (redirect === 'booking') {
         router.push('/book')
       } else {
-        router.push('/dashboard')
+        router.push('/profile')
       }
     } catch (err) {
       setError(err.message)
@@ -57,14 +57,6 @@ function SignupForm() {
         <section className="auth-section">
           <div className="container">
             <div className="auth-container">
-              <div className="auth-image">
-                <img src="https://i.postimg.cc/QdTLQtDV/travel-illustration.jpg" alt="Travel" />
-                <div className="auth-image-overlay">
-                  <h3>Join Waynex Travels</h3>
-                  <p>Create your account and unlock exclusive travel experiences</p>
-                </div>
-              </div>
-
               <div className="auth-card">
                 <div className="auth-header">
                   <ion-icon name="person-add-outline"></ion-icon>
@@ -193,25 +185,35 @@ function SignupForm() {
 
       <style jsx>{`
         .auth-section {
-          padding: 100px 0 80px;
-          background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+          padding: 150px 0 100px;
+          background: linear-gradient(135deg, var(--bright-navy-blue) 0%, var(--yale-blue) 100%);
           min-height: 100vh;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .auth-section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
         .auth-container {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 40px;
-          max-width: 1100px;
+          max-width: 550px;
           margin: 0 auto;
-          background: var(--white);
-          border-radius: var(--radius-25);
-          overflow: hidden;
-          box-shadow: 0 10px 60px rgba(0, 0, 0, 0.15);
+          position: relative;
+          z-index: 1;
         }
 
         .auth-card {
           padding: 60px 50px;
+          background: var(--white);
+          border-radius: var(--radius-25);
+          box-shadow: 0 20px 80px rgba(0, 0, 0, 0.2);
         }
 
         .auth-header {
@@ -367,52 +369,9 @@ function SignupForm() {
           font-size: 18px;
         }
 
-        .auth-image {
-          position: relative;
-          background: var(--bright-navy-blue);
-          overflow: hidden;
-        }
-
-        .auth-image img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          opacity: 0.3;
-        }
-
-        .auth-image-overlay {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          text-align: center;
-          color: var(--white);
-          padding: 40px;
-          z-index: 2;
-        }
-
-        .auth-image-overlay h3 {
-          font-family: var(--ff-montserrat);
-          font-size: var(--fs-1);
-          font-weight: var(--fw-700);
-          margin-bottom: 15px;
-        }
-
-        .auth-image-overlay p {
-          font-family: var(--ff-poppins);
-          font-size: var(--fs-4);
-          opacity: 0.9;
-          line-height: 1.6;
-        }
-
-        @media (max-width: 992px) {
-          .auth-container {
-            grid-template-columns: 1fr;
-          }
-
-          .auth-image {
-            min-height: 300px;
-            order: 2;
+        @media (max-width: 768px) {
+          .auth-section {
+            padding: 120px 20px 80px;
           }
 
           .auth-card {
@@ -425,16 +384,12 @@ function SignupForm() {
         }
 
         @media (max-width: 576px) {
-          .auth-section {
-            padding: 80px 20px 60px;
-          }
-
           .auth-card {
-            padding: 30px 20px;
+            padding: 35px 25px;
           }
 
           .auth-title {
-            font-size: 24px;
+            font-size: var(--fs-3);
           }
 
           .auth-header ion-icon {

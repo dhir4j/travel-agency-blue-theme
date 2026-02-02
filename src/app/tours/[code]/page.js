@@ -241,7 +241,6 @@ export default function TourDetail({ params }) {
                 <Link href={`/tours/${slug}/book`} className={`${styles.ctaButton} ${styles.primaryButton}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   Book Now
                 </Link>
-                <button className={`${styles.ctaButton} ${styles.secondaryButton}`}>Send Enquiry</button>
 
                 <div className={styles.quickInfo}>
                   <div className={styles.infoRow}>
@@ -262,9 +261,9 @@ export default function TourDetail({ params }) {
               <div className={styles.helpCard}>
                 <h3 className={styles.helpTitle}>Need Help?</h3>
                 <p className={styles.helpText}>Our travel experts are here to assist you</p>
-                <a href="tel:+11234567890" className={styles.helpLink}>
+                <a href="tel:+916283279859" className={styles.helpLink}>
                   <ion-icon name="call-outline"></ion-icon>
-                  +1 (123) 456 7890
+                  +91 6283279859
                 </a>
               </div>
             </aside>
