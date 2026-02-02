@@ -39,14 +39,14 @@ export default function Header() {
 
         <div className="header-top">
           <div className="container">
-            <a href="tel:+11234567890" className="helpline-box">
+            <a href="tel:+916283279859" className="helpline-box">
               <div className="icon-box">
                 <ion-icon name="call-outline"></ion-icon>
               </div>
 
               <div className="wrapper">
                 <p className="helpline-title">For Further Inquiries: </p>
-                <p className="helpline-number">+1 (123) 456 7890</p>
+                <p className="helpline-number">+91 6283279859</p>
               </div>
             </a>
 
@@ -102,15 +102,14 @@ export default function Header() {
               <ul className="navbar-list">
                 <li><Link href="/" className="navbar-link" onClick={closeNav}>Home</Link></li>
                 <li><Link href="/tours" className="navbar-link" onClick={closeNav}>Tours</Link></li>
-                <li><Link href="/#about" className="navbar-link" onClick={closeNav}>About us</Link></li>
                 <li><Link href="/visa" className="navbar-link" onClick={closeNav}>Visa Services</Link></li>
-                <li><Link href="/#gallery" className="navbar-link" onClick={closeNav}>Gallery</Link></li>
-                <li><Link href="/#contact" className="navbar-link" onClick={closeNav}>Contact us</Link></li>
+                <li><Link href="/about" className="navbar-link" onClick={closeNav}>About Us</Link></li>
+                <li><Link href="/contact" className="navbar-link" onClick={closeNav}>Contact Us</Link></li>
               </ul>
             </nav>
 
             {user ? (
-              <Link href="/dashboard" className="btn btn-primary" style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+              <Link href="/profile" className="btn btn-primary" style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
                 <ion-icon name="person-circle-outline"></ion-icon>
                 <span>{user.first_name}</span>
               </Link>
