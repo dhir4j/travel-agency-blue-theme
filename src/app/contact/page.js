@@ -15,564 +15,297 @@ export default function ContactPage() {
   })
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     alert('Thank you for contacting us! We will get back to you soon.')
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    })
+    setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
   }
 
   return (
     <>
       <Header />
+
       <main>
-        {/* Hero Section */}
-        <section className="contact-hero">
+        {/* HERO */}
+        <section className="contact-hero-modern">
           <div className="container">
             <h1 className="h1 hero-title">Get in Touch</h1>
-            <p className="hero-subtitle">We're here to help you plan your perfect journey</p>
+            <p className="hero-subtitle">
+              We’re here to help you plan your perfect journey
+            </p>
           </div>
         </section>
 
-        {/* Contact Content */}
+        {/* CONTENT */}
         <section className="contact-content">
           <div className="container">
-            {/* Contact Info Cards */}
-            <div className="contact-info-grid">
-              <div className="info-card">
-                <div className="info-icon">
-                  <ion-icon name="call"></ion-icon>
-                </div>
-                <div className="info-content">
-                  <h3>Phone</h3>
-                  <a href="tel:+916283279859">+91 6283279859</a>
-                  <p>Mon-Sat, 9:00 AM - 6:00 PM</p>
-                </div>
-              </div>
+            <div className="contact-layout">
 
-              <div className="info-card">
-                <div className="info-icon">
-                  <ion-icon name="mail"></ion-icon>
+              {/* LEFT: INFO */}
+              <div className="contact-info">
+                <div className="info-box">
+                  <div className="info-title">
+                    <ion-icon name="call-outline"></ion-icon>
+                    <h3>Phone</h3>
+                  </div>
+                  <a href="tel:+916283279859">+91 6283279859</a>
+                  <p>Mon – Sat · 9:00 AM – 6:00 PM</p>
                 </div>
-                <div className="info-content">
-                  <h3>Email</h3>
+
+                <div className="info-box">
+                  <div className="info-title">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <h3>Email</h3>
+                  </div>
                   <a href="mailto:info@waynextravels.com">info@waynextravels.com</a>
                   <a href="mailto:sales@waynextravels.com">sales@waynextravels.com</a>
                 </div>
+
+                <div className="info-box">
+                  <div className="info-title">
+                    <ion-icon name="location-outline"></ion-icon>
+                    <h3>Office Address</h3>
+                  </div>
+                  <p>
+                    Circular Road, Near Prita Lee Lesson School<br />
+                    Ashok Vihar, Kapurthala<br />
+                    Punjab – 144601, India
+                  </p>
+                </div>
               </div>
 
-              <div className="info-card">
-                <div className="info-icon">
-                  <ion-icon name="location"></ion-icon>
-                </div>
-                <div className="info-content">
-                  <h3>Office Address</h3>
-                  <p>Circular Road, Near Prita Lee Lesson School</p>
-                  <p>Ashok Vihar, Kapurthala</p>
-                  <p>Punjab – 144601, India</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Contact Form & Support Section */}
-            <div className="contact-main-grid">
-              {/* Contact Form */}
-              <div className="form-section">
-                <div className="form-header">
-                  <h2>Send us a Message</h2>
-                  <p>Fill out the form below and we'll get back to you within 24 hours</p>
-                </div>
+              {/* RIGHT: FORM */}
+              <div className="contact-form-box">
+                <h2>Send us a Message</h2>
+                <p className="form-desc">
+                  Fill out the form and we’ll respond within 24 hours
+                </p>
 
                 <form onSubmit={handleSubmit} className="contact-form">
-                  <div className="form-grid">
-                    <div className="form-group">
-                      <label htmlFor="name">Full Name *</label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="John Doe"
-                        required
-                      />
-                    </div>
-
-                    <div className="form-group">
-                      <label htmlFor="phone">Phone Number *</label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="+91 98765 43210"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="email">Email Address *</label>
+                  <div className="form-row">
                     <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
+                      type="text"
+                      name="name"
+                      placeholder="Full Name *"
+                      value={formData.name}
                       onChange={handleChange}
-                      placeholder="john@example.com"
+                      required
+                    />
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder="Phone Number *"
+                      value={formData.phone}
+                      onChange={handleChange}
                       required
                     />
                   </div>
 
-                  <div className="form-group">
-                    <label htmlFor="subject">Subject *</label>
-                    <select
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                    >
-                      <option value="">Select a subject</option>
-                      <option value="tour-inquiry">Tour Inquiry</option>
-                      <option value="visa-inquiry">Visa Services</option>
-                      <option value="booking">Booking Assistance</option>
-                      <option value="feedback">Feedback</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address *"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
 
-                  <div className="form-group">
-                    <label htmlFor="message">Your Message *</label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell us more about your travel plans..."
-                      rows="6"
-                      required
-                    ></textarea>
-                  </div>
+                  <select
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Select Subject</option>
+                    <option value="tour">Tour Inquiry</option>
+                    <option value="visa">Visa Services</option>
+                    <option value="booking">Booking Assistance</option>
+                    <option value="other">Other</option>
+                  </select>
 
-                  <button type="submit" className="btn btn-primary submit-btn">
-                    <span>Send Message</span>
-                    <ion-icon name="send-outline"></ion-icon>
+                  <textarea
+                    name="message"
+                    placeholder="Tell us about your travel plans..."
+                    rows="5"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                  />
+
+                  <button type="submit" className="btn btn-primary">
+                    Send Message
                   </button>
                 </form>
               </div>
 
-              {/* Support Info Sidebar */}
-              <aside className="support-sidebar">
-                <div className="support-card">
-                  <div className="support-icon">
-                    <ion-icon name="time-outline"></ion-icon>
-                  </div>
-                  <h3>Business Hours</h3>
-                  <div className="hours-list">
-                    <div className="hours-row">
-                      <span>Monday - Friday</span>
-                      <span>9:00 AM - 6:00 PM</span>
-                    </div>
-                    <div className="hours-row">
-                      <span>Saturday</span>
-                      <span>9:00 AM - 4:00 PM</span>
-                    </div>
-                    <div className="hours-row">
-                      <span>Sunday</span>
-                      <span>Closed</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="support-card">
-                  <div className="support-icon">
-                    <ion-icon name="headset-outline"></ion-icon>
-                  </div>
-                  <h3>Quick Support</h3>
-                  <p>Need immediate assistance? Our team is ready to help!</p>
-                  <div className="support-links">
-                    <a href="tel:+916283279859" className="support-btn">
-                      <ion-icon name="call-outline"></ion-icon>
-                      Call Now
-                    </a>
-                    <a href="mailto:support@waynextravels.com" className="support-btn">
-                      <ion-icon name="mail-outline"></ion-icon>
-                      Email Support
-                    </a>
-                  </div>
-                </div>
-
-                <div className="support-card">
-                  <div className="support-icon">
-                    <ion-icon name="information-circle-outline"></ion-icon>
-                  </div>
-                  <h3>Have Questions?</h3>
-                  <p>Check out our frequently asked questions or contact our support team for personalized assistance.</p>
-                </div>
-              </aside>
             </div>
           </div>
         </section>
       </main>
+
       <Footer />
       <GoTop />
 
+      {/* STYLES */}
       <style jsx>{`
-        .contact-hero {
-          padding: 140px 0 80px;
-          background: linear-gradient(135deg, var(--bright-navy-blue) 0%, var(--yale-blue) 100%);
+        /* HERO */
+        .contact-hero-modern {
+          position: relative;
+          padding: 180px 0 100px;
+          background-image: url("https://i.postimg.cc/D0c2FLPM/hero-banner.jpg");
+          background-size: cover;
+          background-position: center;
           text-align: center;
-          color: var(--white);
-          position: relative;
-          overflow: hidden;
+          color: #fff;
         }
 
-        .contact-hero::before {
-          content: '';
+        .contact-hero-modern::before {
+          content: "";
           position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+          inset: 0;
+          background: rgba(0, 0, 0, 0.6);
         }
 
-        .hero-title {
+        .contact-hero-modern .container {
           position: relative;
-          z-index: 1;
-          margin-bottom: 15px;
-          font-size: var(--fs-1);
+          z-index: 2;
         }
+        
+
 
         .hero-subtitle {
-          position: relative;
-          z-index: 1;
-          font-size: var(--fs-4);
+          margin-top: 12px;
           opacity: 0.95;
         }
 
+        /* CONTENT */
         .contact-content {
-          padding: 80px 0;
+          padding: 90px 0;
           background: var(--cultured);
         }
 
-        /* Contact Info Cards */
-        .contact-info-grid {
+        .contact-layout {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 30px;
-          margin-bottom: 60px;
-        }
-
-        .info-card {
-          background: var(--white);
-          padding: 40px 30px;
-          border-radius: var(--radius-25);
-          text-align: center;
-          box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-          transition: var(--transition);
-        }
-
-        .info-card:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .info-icon {
-          width: 80px;
-          height: 80px;
-          margin: 0 auto 25px;
-          background: linear-gradient(135deg, var(--bright-navy-blue), var(--yale-blue));
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .info-icon ion-icon {
-          font-size: 40px;
-          color: var(--white);
-        }
-
-        .info-content h3 {
-          font-size: var(--fs-3);
-          color: var(--oxford-blue);
-          margin-bottom: 15px;
-          font-weight: var(--fw-700);
-        }
-
-        .info-content a {
-          display: block;
-          color: var(--bright-navy-blue);
-          font-size: var(--fs-5);
-          font-weight: var(--fw-600);
-          text-decoration: none;
-          margin-bottom: 8px;
-          transition: var(--transition);
-        }
-
-        .info-content a:hover {
-          color: var(--yale-blue);
-        }
-
-        .info-content p {
-          color: var(--spanish-gray);
-          font-size: var(--fs-6);
-          line-height: 1.6;
-        }
-
-        /* Main Grid */
-        .contact-main-grid {
-          display: grid;
-          grid-template-columns: 1.5fr 1fr;
-          gap: 40px;
+          grid-template-columns: 1fr 1.2fr;
+          gap: 50px;
           align-items: start;
         }
 
-        /* Form Section */
-        .form-section {
-          background: var(--white);
-          padding: 50px;
-          border-radius: var(--radius-25);
-          box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        /* INFO */
+        .contact-info {
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
         }
 
-        .form-header {
-          margin-bottom: 40px;
+        .info-box {
+          background: #fff;
+          padding: 35px;
+          border-radius: 20px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
-        .form-header h2 {
-          font-size: var(--fs-2);
+        .info-title {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 12px;
+        }
+
+        .info-title ion-icon {
+          font-size: 26px;
+          color: var(--bright-navy-blue);
+        }
+
+        .info-title h3 {
+          margin: 0;
           color: var(--oxford-blue);
-          margin-bottom: 10px;
-          font-weight: var(--fw-700);
         }
 
-        .form-header p {
+        .info-box a {
+          display: block;
+          color: var(--bright-navy-blue);
+          margin-bottom: 6px;
+          font-weight: 600;
+          text-decoration: none;
+        }
+
+        .info-box p {
           color: var(--spanish-gray);
-          font-size: var(--fs-5);
+          line-height: 1.6;
+        }
+
+        /* FORM */
+        .contact-form-box {
+          background: #fff;
+          padding: 45px;
+          border-radius: 24px;
+          box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .contact-form-box h2 {
+          margin-bottom: 10px;
+          color: var(--oxford-blue);
+        }
+
+        .form-desc {
+          margin-bottom: 30px;
+          color: var(--spanish-gray);
         }
 
         .contact-form {
           display: flex;
           flex-direction: column;
-          gap: 25px;
+          gap: 18px;
         }
 
-        .form-grid {
+        .form-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 25px;
+          gap: 18px;
         }
 
-        .form-group {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-        }
-
-        .form-group label {
-          font-size: var(--fs-6);
-          font-weight: var(--fw-600);
-          color: var(--gunmetal);
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-          padding: 15px 20px;
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+          padding: 14px 18px;
+          border-radius: 10px;
           border: 2px solid var(--gainsboro);
-          border-radius: var(--radius-10);
-          font-family: var(--ff-poppins);
-          font-size: var(--fs-6);
-          color: var(--gunmetal);
-          transition: var(--transition);
+          font-size: 14px;
         }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-          outline: none;
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
           border-color: var(--bright-navy-blue);
-          box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+          outline: none;
         }
 
-        .form-group textarea {
-          resize: vertical;
-          min-height: 150px;
-        }
-
-        .submit-btn {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          padding: 18px 40px;
-          font-size: var(--fs-5);
-          font-weight: var(--fw-700);
+        .contact-form button {
           margin-top: 10px;
         }
 
-        .submit-btn ion-icon {
-          font-size: 22px;
-        }
-
-        /* Support Sidebar */
-        .support-sidebar {
-          display: flex;
-          flex-direction: column;
-          gap: 25px;
-        }
-
-        .support-card {
-          background: var(--white);
-          padding: 35px;
-          border-radius: var(--radius-25);
-          box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-        }
-
-        .support-icon {
-          width: 60px;
-          height: 60px;
-          margin-bottom: 20px;
-          background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .support-icon ion-icon {
-          font-size: 32px;
-          color: var(--bright-navy-blue);
-        }
-
-        .support-card h3 {
-          font-size: var(--fs-4);
-          color: var(--oxford-blue);
-          margin-bottom: 15px;
-          font-weight: var(--fw-700);
-        }
-
-        .support-card p {
-          color: var(--spanish-gray);
-          font-size: var(--fs-6);
-          line-height: 1.7;
-        }
-
-        .hours-list {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-        }
-
-        .hours-row {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 12px 0;
-          border-bottom: 1px solid var(--gainsboro);
-          font-size: var(--fs-6);
-        }
-
-        .hours-row:last-child {
-          border-bottom: none;
-        }
-
-        .hours-row span:first-child {
-          color: var(--gunmetal);
-          font-weight: var(--fw-500);
-        }
-
-        .hours-row span:last-child {
-          color: var(--spanish-gray);
-          font-weight: var(--fw-600);
-        }
-
-        .support-links {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          margin-top: 20px;
-        }
-
-        .support-btn {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          padding: 14px 24px;
-          background: linear-gradient(135deg, var(--bright-navy-blue), var(--yale-blue));
-          color: var(--white);
-          border-radius: var(--radius-10);
-          text-decoration: none;
-          font-size: var(--fs-6);
-          font-weight: var(--fw-600);
-          transition: var(--transition);
-        }
-
-        .support-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-        }
-
-        .support-btn ion-icon {
-          font-size: 20px;
-        }
-
-        @media (max-width: 1024px) {
-          .contact-main-grid {
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+          .contact-layout {
             grid-template-columns: 1fr;
-          }
-
-          .form-section {
-            order: 1;
-          }
-
-          .support-sidebar {
-            order: 2;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
           }
         }
 
         @media (max-width: 768px) {
-          .contact-hero {
-            padding: 120px 0 60px;
+          .contact-hero-modern {
+            padding: 140px 0 80px;
           }
 
-          .contact-content {
-            padding: 60px 0;
-          }
-
-          .contact-info-grid {
+          .form-row {
             grid-template-columns: 1fr;
           }
 
-          .form-section {
-            padding: 35px 25px;
-          }
-
-          .form-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .support-sidebar {
-            grid-template-columns: 1fr;
+          .contact-form-box {
+            padding: 30px;
           }
         }
       `}</style>

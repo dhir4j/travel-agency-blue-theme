@@ -11,13 +11,15 @@ import GoTop from '@/components/GoTop'
 function SignupForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
+
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
     first_name: '',
     last_name: '',
-    phone: ''
+    email: '',
+    phone: '',
+    password: ''
   })
+
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -27,9 +29,8 @@ function SignupForm() {
     setError('')
 
     try {
-      const result = await authAPI.signup(formData)
+      await authAPI.signup(formData)
 
-      // Auto-login after signup
       const loginResult = await authAPI.login({
         email: formData.email,
         password: formData.password
@@ -37,15 +38,10 @@ function SignupForm() {
 
       session.setUser(loginResult.user)
 
-      // Redirect based on context
       const redirect = searchParams.get('redirect')
-      if (redirect === 'booking') {
-        router.push('/book')
-      } else {
-        router.push('/profile')
-      }
+      router.push(redirect === 'booking' ? '/book' : '/profile')
     } catch (err) {
-      setError(err.message)
+      setError(err?.message || 'Something went wrong')
       setLoading(false)
     }
   }
@@ -53,347 +49,284 @@ function SignupForm() {
   return (
     <>
       <Header />
+
       <main>
-        <section className="auth-section">
+        <section className="auth-hero">
           <div className="container">
-            <div className="auth-container">
-              <div className="auth-card">
-                <div className="auth-header">
-                  <ion-icon name="person-add-outline"></ion-icon>
-                  <h2 className="auth-title">Create Account</h2>
-                  <p className="auth-subtitle">Join us to start booking amazing trips</p>
+            <div className="auth-center">
+
+              {/* COMBINED GLASS CARD */}
+              <div className="auth-glass-card">
+
+                {/* LEFT BRAND */}
+                <div className="auth-brand">
+                  <h1>Begin your Waynex experience</h1>
+                  <p>
+                    Create your account and manage tours, visas, and travel
+                    plans effortlessly — all from one secure platform.
+                  </p>
+
+                  <ul>
+                    <li>
+                      <ion-icon name="shield-checkmark-outline"></ion-icon>
+                      Secure & verified services
+                    </li>
+                    <li>
+                      <ion-icon name="time-outline"></ion-icon>
+                      Fast visa processing
+                    </li>
+                    <li>
+                      <ion-icon name="star-outline"></ion-icon>
+                      Rated 4.7 by 15000+ travelers
+                    </li>
+                  </ul>
                 </div>
 
-                {error && (
-                  <div className="alert alert-error">
-                    <ion-icon name="alert-circle-outline"></ion-icon>
-                    <span>{error}</span>
-                  </div>
-                )}
+                {/* RIGHT FORM */}
+                <div className="auth-form-section">
+                  <h2>Create Account</h2>
+                  <p className="subtitle">Takes less than a minute</p>
 
-                <form onSubmit={handleSubmit} className="auth-form">
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label className="form-label">
-                        <ion-icon name="person-outline"></ion-icon>
-                        First Name
-                      </label>
+                  {error && (
+                    <div className="auth-error">{error}</div>
+                  )}
+
+                  <form onSubmit={handleSubmit}>
+                    <div className="form-row">
                       <input
                         type="text"
-                        className="form-input"
+                        placeholder="First name"
                         value={formData.first_name}
-                        onChange={(e) => setFormData({...formData, first_name: e.target.value})}
-                        placeholder="John"
+                        onChange={(e) =>
+                          setFormData({ ...formData, first_name: e.target.value })
+                        }
                         required
                       />
-                    </div>
 
-                    <div className="form-group">
-                      <label className="form-label">
-                        <ion-icon name="person-outline"></ion-icon>
-                        Last Name
-                      </label>
                       <input
                         type="text"
-                        className="form-input"
+                        placeholder="Last name"
                         value={formData.last_name}
-                        onChange={(e) => setFormData({...formData, last_name: e.target.value})}
-                        placeholder="Doe"
+                        onChange={(e) =>
+                          setFormData({ ...formData, last_name: e.target.value })
+                        }
                         required
                       />
                     </div>
-                  </div>
 
-                  <div className="form-group">
-                    <label className="form-label">
-                      <ion-icon name="mail-outline"></ion-icon>
-                      Email Address
-                    </label>
                     <input
                       type="email"
-                      className="form-input"
+                      placeholder="Email address"
                       value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      placeholder="john.doe@example.com"
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
                       required
                     />
-                  </div>
 
-                  <div className="form-group">
-                    <label className="form-label">
-                      <ion-icon name="call-outline"></ion-icon>
-                      Phone Number
-                    </label>
                     <input
                       type="tel"
-                      className="form-input"
+                      placeholder="Phone number"
                       value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      placeholder="+1 (123) 456-7890"
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: e.target.value })
+                      }
                     />
-                  </div>
 
-                  <div className="form-group">
-                    <label className="form-label">
-                      <ion-icon name="lock-closed-outline"></ion-icon>
-                      Password
-                    </label>
                     <input
                       type="password"
-                      className="form-input"
+                      placeholder="Password (min 6 characters)"
                       value={formData.password}
-                      onChange={(e) => setFormData({...formData, password: e.target.value})}
-                      placeholder="Minimum 6 characters"
-                      required
+                      onChange={(e) =>
+                        setFormData({ ...formData, password: e.target.value })
+                      }
                       minLength={6}
+                      required
                     />
+
+                    <button
+                      type="submit"
+                      className="auth-btn"
+                      disabled={loading}
+                    >
+                      {loading ? 'Creating…' : 'Sign Up'}
+                    </button>
+                  </form>
+
+                  <div className="auth-footer">
+                    Already have an account?
+                    <Link href="/auth/login"> Login</Link>
                   </div>
-
-                  <button
-                    type="submit"
-                    className="btn btn-primary auth-btn"
-                    disabled={loading}
-                  >
-                    {loading ? (
-                      <>
-                        <ion-icon name="hourglass-outline"></ion-icon>
-                        <span>Creating Account...</span>
-                      </>
-                    ) : (
-                      <>
-                        <ion-icon name="person-add-outline"></ion-icon>
-                        <span>Sign Up</span>
-                      </>
-                    )}
-                  </button>
-                </form>
-
-                <div className="auth-footer">
-                  <p>Already have an account?</p>
-                  <Link href="/auth/login" className="auth-link">
-                    Login Now
-                    <ion-icon name="arrow-forward-outline"></ion-icon>
-                  </Link>
                 </div>
+
               </div>
             </div>
           </div>
         </section>
       </main>
+
       <Footer />
       <GoTop />
 
       <style jsx>{`
-        .auth-section {
-          padding: 150px 0 100px;
-          background: linear-gradient(135deg, var(--bright-navy-blue) 0%, var(--yale-blue) 100%);
-          min-height: 100vh;
+        /* HERO */
+        .auth-hero {
           position: relative;
-          overflow: hidden;
+          min-height: 100vh;
+          padding: 160px 0 100px;
+          background-image: url("https://i.postimg.cc/D0c2FLPM/hero-banner.jpg");
+          background-size: cover;
+          background-position: center;
         }
 
-        .auth-section::before {
-          content: '';
+        .auth-hero::before {
+          content: "";
           position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+          inset: 0;
+          background: linear-gradient(
+            180deg,
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.35)
+          );
+          pointer-events: none;
         }
 
-        .auth-container {
-          max-width: 550px;
-          margin: 0 auto;
+        .auth-center {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: calc(100vh - 260px);
           position: relative;
           z-index: 1;
         }
 
-        .auth-card {
-          padding: 60px 50px;
-          background: var(--white);
-          border-radius: var(--radius-25);
-          box-shadow: 0 20px 80px rgba(0, 0, 0, 0.2);
+        /* GLASS CARD */
+        .auth-glass-card {
+          width: 100%;
+          max-width: 1180px;
+          min-height: 540px;
+
+          display: grid;
+          grid-template-columns: 1.5fr 1.1fr;
+          gap: 60px;
+
+          padding: 60px;
+
+          background: rgba(0,0,0,0.32);
+          backdrop-filter: blur(18px);
+
+          border-radius: 30px;
+          box-shadow: 0 40px 120px rgba(0,0,0,0.6);
         }
 
-        .auth-header {
-          text-align: center;
-          margin-bottom: 35px;
+/* LEFT */
+.auth-brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* ✅ vertical centering */
+  height: 100%;              /* ✅ fill glass card height */
+}
+
+.auth-brand h1 {
+  font-size: 42px;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.auth-brand p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.9);
+  max-width: 480px;
+  margin-bottom: 28px;
+}
+
+
+.auth-brand ul li {
+  display: flex;              /* ✅ puts icon + text on same line */
+  align-items: center;        /* ✅ vertical alignment */
+  gap: 10px;
+  color: rgba(255,255,255,0.85);                  /* spacing between icon & text */
+}
+
+.auth-brand ul li ion-icon {
+  font-size: 18px;
+  flex-shrink: 0;             /* prevents icon from shrinking */
+  opacity: 0.9;
+}
+
+
+        /* RIGHT */
+        .auth-form-section {
+          background: rgba(255,255,255,0.9);
+          border-radius: 24px;
+          padding: 48px;
+          max-width: 440px;
+          width: 100%;
+          justify-self: end;
         }
 
-        .auth-header ion-icon {
-          font-size: 60px;
-          color: var(--bright-navy-blue);
-          margin: 0 auto 20px;
+        .auth-form-section h2 {
+          font-size: 22px;
+          margin-bottom: 6px;
         }
 
-        .auth-title {
-          font-family: var(--ff-montserrat);
-          font-size: var(--fs-2);
-          font-weight: var(--fw-700);
-          color: var(--oxford-blue);
-          margin-bottom: 10px;
+        .subtitle {
+          font-size: 14px;
+          color: #666;
+          margin-bottom: 24px;
         }
 
-        .auth-subtitle {
-          font-family: var(--ff-poppins);
-          font-size: var(--fs-5);
-          color: var(--spanish-gray);
-        }
-
-        .alert {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          padding: 15px 20px;
-          border-radius: 10px;
-          margin-bottom: 20px;
-          font-family: var(--ff-poppins);
-          font-size: var(--fs-6);
-        }
-
-        .alert-error {
-          background: #fee;
-          color: #c33;
-          border: 1px solid #fcc;
-        }
-
-        .alert ion-icon {
-          font-size: 24px;
-        }
-
-        .auth-form {
+        form {
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 14px;
+        }
+
+        input {
+          padding: 14px 16px;
+          border-radius: 12px;
+          border: 1px solid #ddd;
+          font-size: 14px;
         }
 
         .form-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 15px;
-        }
-
-        .form-group {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-        }
-
-        .form-label {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          font-family: var(--ff-poppins);
-          font-size: var(--fs-6);
-          font-weight: var(--fw-600);
-          color: var(--gunmetal);
-        }
-
-        .form-label ion-icon {
-          font-size: 18px;
-          color: var(--bright-navy-blue);
-        }
-
-        .form-input {
-          padding: 15px 20px;
-          border: 2px solid var(--gainsboro);
-          border-radius: 10px;
-          font-family: var(--ff-poppins);
-          font-size: var(--fs-5);
-          color: var(--gunmetal);
-          transition: var(--transition);
-        }
-
-        .form-input:focus {
-          outline: none;
-          border-color: var(--bright-navy-blue);
-          box-shadow: 0 0 0 4px rgba(66, 133, 244, 0.1);
-        }
-
-        .form-input::placeholder {
-          color: var(--spanish-gray);
-        }
-
-        .auth-btn {
-          margin-top: 10px;
-          padding: 18px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          font-size: var(--fs-5);
-          font-weight: var(--fw-600);
-          border: none;
-          cursor: pointer;
-          transition: var(--transition);
-        }
-
-        .auth-btn:disabled {
-          opacity: 0.6;
-          cursor: not-allowed;
-        }
-
-        .auth-btn ion-icon {
-          font-size: 22px;
-        }
-
-        .auth-footer {
-          margin-top: 25px;
-          text-align: center;
-          font-family: var(--ff-poppins);
-        }
-
-        .auth-footer p {
-          font-size: var(--fs-6);
-          color: var(--spanish-gray);
-          margin-bottom: 10px;
-        }
-
-        .auth-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          color: var(--bright-navy-blue);
-          font-size: var(--fs-5);
-          font-weight: var(--fw-600);
-          transition: var(--transition);
-        }
-
-        .auth-link:hover {
-          color: var(--yale-blue);
           gap: 12px;
         }
 
-        .auth-link ion-icon {
-          font-size: 18px;
+        .auth-btn {
+          margin-top: 12px;
+          padding: 14px;
+          border-radius: 999px;
+          background: var(--bright-navy-blue);
+          color: #fff;
+          font-size: 15px;
+          border: none;
         }
 
-        @media (max-width: 768px) {
-          .auth-section {
-            padding: 120px 20px 80px;
-          }
+        .auth-footer {
+          margin-top: 20px;
+          text-align: center;
+          font-size: 13px;
+          color: #555;
+        }
 
-          .auth-card {
-            padding: 40px 30px;
-          }
+        .auth-footer a {
+          color: var(--bright-navy-blue);
+          font-weight: 600;
+        }
 
-          .form-row {
+        /* MOBILE */
+        @media (max-width: 992px) {
+          .auth-glass-card {
             grid-template-columns: 1fr;
-          }
-        }
-
-        @media (max-width: 576px) {
-          .auth-card {
-            padding: 35px 25px;
+            padding: 40px;
+            text-align: center;
           }
 
-          .auth-title {
-            font-size: var(--fs-3);
-          }
-
-          .auth-header ion-icon {
-            font-size: 50px;
+          .auth-form-section {
+            justify-self: center;
           }
         }
       `}</style>
@@ -403,7 +336,7 @@ function SignupForm() {
 
 export default function SignupPage() {
   return (
-    <Suspense fallback={<div style={{maxWidth: '400px', margin: '100px auto', padding: '20px'}}>Loading...</div>}>
+    <Suspense fallback={<div style={{ padding: 120, textAlign: 'center' }}>Loading…</div>}>
       <SignupForm />
     </Suspense>
   )

@@ -8,12 +8,17 @@ export default function AboutPage() {
   return (
     <>
       <Header />
+
       <main>
-        {/* Hero Section */}
-        <section className="page-hero">
+        {/* Hero Section with Background Image (Same style as Visa page) */}
+        <section className="about-hero-modern">
           <div className="container">
+            <br></br>
+            <br></br>
             <h1 className="h1 hero-title">About Waynex Travels</h1>
-            <p className="hero-subtitle">Your trusted partner in creating unforgettable travel experiences</p>
+            <p className="hero-subtitle">
+              Your trusted partner in creating unforgettable travel experiences
+            </p>
           </div>
         </section>
 
@@ -22,20 +27,23 @@ export default function AboutPage() {
           <div className="container">
             <div className="about-grid">
               <div className="about-text">
-                <h2>Who We Are</h2>
+                <h2 className="section-title">Who We Are</h2>
                 <p>
-                  <strong>Waynex Travels & Logistics (OPC) Private Limited</strong> is a premier travel and logistics company
-                  dedicated to providing exceptional travel experiences and comprehensive visa services. Based in Kapurthala, Punjab,
-                  we have been serving travelers across India and internationally, making dreams of exploration come true.
+                  <strong>Waynex Travels & Logistics (OPC) Private Limited</strong> is a premier travel and
+                  logistics company dedicated to delivering exceptional travel and visa services.
+                  Based in Kapurthala, Punjab, we proudly serve travelers across India and globally.
                 </p>
                 <p>
-                  Our mission is to simplify travel planning while ensuring every journey is memorable, comfortable, and hassle-free.
-                  Whether you're planning a domestic getaway or an international adventure, we're here to guide you every step of the way.
+                  Our mission is to simplify travel planning while ensuring every journey is smooth,
+                  memorable, and completely stress-free.
                 </p>
               </div>
 
               <div className="about-image">
-                <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80" alt="Travel" />
+                <img
+                  src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=900&q=80"
+                  alt="Travel Experience"
+                />
               </div>
             </div>
           </div>
@@ -44,14 +52,15 @@ export default function AboutPage() {
         {/* Our Services */}
         <section className="services-section">
           <div className="container">
-            <h2 className="section-title">Our Services</h2>
+            <h3 className="section-title">Our Services</h3>
+
             <div className="services-grid">
               <div className="service-card">
                 <div className="service-icon">
                   <ion-icon name="airplane"></ion-icon>
                 </div>
                 <h3>Tour Packages</h3>
-                <p>Curated domestic and international tour packages designed to match your interests and budget.</p>
+                <p>Domestic and international tours tailored to your interests and budget.</p>
               </div>
 
               <div className="service-card">
@@ -59,7 +68,7 @@ export default function AboutPage() {
                   <ion-icon name="document-text"></ion-icon>
                 </div>
                 <h3>Visa Services</h3>
-                <p>Comprehensive visa assistance for destinations worldwide, making the process smooth and stress-free.</p>
+                <p>End-to-end visa assistance for destinations worldwide.</p>
               </div>
 
               <div className="service-card">
@@ -67,7 +76,7 @@ export default function AboutPage() {
                   <ion-icon name="business"></ion-icon>
                 </div>
                 <h3>Logistics Solutions</h3>
-                <p>Reliable logistics services ensuring your travel arrangements are seamless from start to finish.</p>
+                <p>Seamless logistics support for personal and business travel needs.</p>
               </div>
 
               <div className="service-card">
@@ -75,7 +84,7 @@ export default function AboutPage() {
                   <ion-icon name="people"></ion-icon>
                 </div>
                 <h3>Group Travel</h3>
-                <p>Specialized packages for corporate groups, families, and friends seeking memorable adventures together.</p>
+                <p>Corporate, family, and group travel packages made easy.</p>
               </div>
 
               <div className="service-card">
@@ -83,7 +92,7 @@ export default function AboutPage() {
                   <ion-icon name="headset"></ion-icon>
                 </div>
                 <h3>24/7 Support</h3>
-                <p>Round-the-clock customer support to assist you before, during, and after your travels.</p>
+                <p>Round-the-clock assistance before, during, and after your journey.</p>
               </div>
 
               <div className="service-card">
@@ -91,7 +100,7 @@ export default function AboutPage() {
                   <ion-icon name="shield-checkmark"></ion-icon>
                 </div>
                 <h3>Travel Insurance</h3>
-                <p>Comprehensive travel insurance options to protect you and your loved ones on every journey.</p>
+                <p>Reliable insurance options to protect you throughout your trip.</p>
               </div>
             </div>
           </div>
@@ -100,89 +109,68 @@ export default function AboutPage() {
         {/* Why Choose Us */}
         <section className="why-choose-us">
           <div className="container">
-            <h2 className="section-title">Why Choose Waynex Travels?</h2>
+            <h3 className="section-title">Why Choose Waynex Travels?</h3>
+
             <div className="features-grid">
-              <div className="feature-item">
-                <ion-icon name="checkmark-circle"></ion-icon>
-                <div>
-                  <h4>Experienced Team</h4>
-                  <p>Our travel experts have years of experience in crafting perfect itineraries</p>
+              {[
+                'Experienced Team',
+                'Best Prices',
+                'Personalized Service',
+                'Safety First',
+                'Trusted Partners',
+                'Customer Satisfaction'
+              ].map((title, index) => (
+                <div key={index} className="feature-item">
+                  <ion-icon name="checkmark-circle"></ion-icon>
+                  <div>
+                    <h4>{title}</h4>
+                    <p>We deliver excellence and reliability in every journey.</p>
+                  </div>
                 </div>
-              </div>
-
-              <div className="feature-item">
-                <ion-icon name="checkmark-circle"></ion-icon>
-                <div>
-                  <h4>Best Prices</h4>
-                  <p>Competitive pricing without compromising on quality and service</p>
-                </div>
-              </div>
-
-              <div className="feature-item">
-                <ion-icon name="checkmark-circle"></ion-icon>
-                <div>
-                  <h4>Personalized Service</h4>
-                  <p>Tailored travel solutions designed around your preferences and needs</p>
-                </div>
-              </div>
-
-              <div className="feature-item">
-                <ion-icon name="checkmark-circle"></ion-icon>
-                <div>
-                  <h4>Safety First</h4>
-                  <p>Your safety and security are our top priorities on every journey</p>
-                </div>
-              </div>
-
-              <div className="feature-item">
-                <ion-icon name="checkmark-circle"></ion-icon>
-                <div>
-                  <h4>Trusted Partners</h4>
-                  <p>Collaborations with reputable hotels, airlines, and service providers worldwide</p>
-                </div>
-              </div>
-
-              <div className="feature-item">
-                <ion-icon name="checkmark-circle"></ion-icon>
-                <div>
-                  <h4>Customer Satisfaction</h4>
-                  <p>Thousands of happy travelers who trust us for their journeys</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* CTA */}
         <section className="cta-section">
           <div className="container">
             <h2>Ready to Start Your Adventure?</h2>
-            <p>Let us help you plan your next unforgettable journey</p>
+            <p>Let us plan your next unforgettable journey</p>
+            <br />
             <div className="cta-buttons">
               <a href="/tours" className="btn btn-primary">Explore Tours</a>
-              <a href="/contact" className="btn btn-secondary">Contact Us</a>
+              <a href="/contact" className="btn btn-primary">Contact Us</a>
             </div>
           </div>
         </section>
       </main>
+
       <Footer />
       <GoTop />
 
+      {/* Styles */}
       <style jsx>{`
-        .page-hero {
-          padding: 160px 0 80px;
-          background: linear-gradient(135deg, var(--bright-navy-blue) 0%, var(--yale-blue) 100%);
+        .about-hero-modern {
+          position: relative;
+          padding: 140px 0 100px;
           text-align: center;
           color: var(--white);
+          background-image: url("https://i.postimg.cc/D0c2FLPM/hero-banner.jpg");
+          background-size: cover;
+          background-position: center;
         }
 
-        .hero-title {
-          margin-bottom: 15px;
+        .about-hero-modern::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.6);
         }
 
-        .hero-subtitle {
-          font-size: var(--fs-4);
-          opacity: 0.95;
+        .about-hero-modern .container {
+          position: relative;
+          z-index: 2;
         }
 
         .about-content {
@@ -196,24 +184,10 @@ export default function AboutPage() {
           align-items: center;
         }
 
-        .about-text h2 {
-          font-size: var(--fs-2);
-          color: var(--oxford-blue);
-          margin-bottom: 25px;
-        }
-
-        .about-text p {
-          color: var(--spanish-gray);
-          line-height: 1.8;
-          margin-bottom: 20px;
-        }
-
         .about-image img {
           width: 100%;
-          height: 100%;
-          object-fit: cover;
           border-radius: var(--radius-25);
-          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
         }
 
         .services-section {
@@ -223,14 +197,14 @@ export default function AboutPage() {
 
         .section-title {
           text-align: center;
-          font-size: var(--fs-1);
-          color: var(--oxford-blue);
+          font-size: var(--fs-2);
           margin-bottom: 50px;
         }
 
-        .services-grid {
+        .services-grid,
+        .features-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 30px;
         }
 
@@ -239,47 +213,28 @@ export default function AboutPage() {
           padding: 40px 30px;
           border-radius: var(--radius-25);
           text-align: center;
-          transition: var(--transition);
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+          transition: 0.3s;
         }
 
         .service-card:hover {
           transform: translateY(-10px);
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
         }
 
         .service-icon {
           width: 80px;
           height: 80px;
           margin: 0 auto 20px;
-          background: linear-gradient(135deg, var(--bright-navy-blue) 0%, var(--yale-blue) 100%);
           border-radius: 50%;
+          background: linear-gradient(135deg, var(--bright-navy-blue), var(--yale-blue));
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 40px;
-          color: var(--white);
-        }
-
-        .service-card h3 {
-          font-size: var(--fs-3);
-          color: var(--oxford-blue);
-          margin-bottom: 15px;
-        }
-
-        .service-card p {
-          color: var(--spanish-gray);
-          line-height: 1.6;
+          font-size: 38px;
+          color: #fff;
         }
 
         .why-choose-us {
           padding: 80px 0;
-        }
-
-        .features-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-          gap: 30px;
         }
 
         .feature-item {
@@ -288,53 +243,24 @@ export default function AboutPage() {
           padding: 25px;
           background: var(--cultured);
           border-radius: var(--radius-15);
-          transition: var(--transition);
-        }
-
-        .feature-item:hover {
-          background: var(--white);
-          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
         }
 
         .feature-item ion-icon {
           font-size: 32px;
           color: var(--bright-navy-blue);
-          flex-shrink: 0;
-        }
-
-        .feature-item h4 {
-          font-size: var(--fs-4);
-          color: var(--oxford-blue);
-          margin-bottom: 8px;
-        }
-
-        .feature-item p {
-          color: var(--spanish-gray);
-          line-height: 1.6;
         }
 
         .cta-section {
           padding: 80px 0;
-          background: linear-gradient(135deg, var(--bright-navy-blue) 0%, var(--yale-blue) 100%);
-          text-align: center;
+          background: linear-gradient(135deg, var(--bright-navy-blue), var(--yale-blue));
           color: var(--white);
-        }
-
-        .cta-section h2 {
-          font-size: var(--fs-1);
-          margin-bottom: 15px;
-        }
-
-        .cta-section p {
-          font-size: var(--fs-4);
-          margin-bottom: 30px;
-          opacity: 0.95;
+          text-align: center;
         }
 
         .cta-buttons {
           display: flex;
-          gap: 20px;
           justify-content: center;
+          gap: 20px;
           flex-wrap: wrap;
         }
 
@@ -342,20 +268,11 @@ export default function AboutPage() {
           .about-grid {
             grid-template-columns: 1fr;
           }
-
-          .about-image {
-            order: -1;
-          }
         }
 
         @media (max-width: 768px) {
-          .page-hero {
-            padding: 120px 0 60px;
-          }
-
-          .services-grid,
-          .features-grid {
-            grid-template-columns: 1fr;
+          .about-hero-modern {
+            padding: 140px 0 80px;
           }
         }
       `}</style>

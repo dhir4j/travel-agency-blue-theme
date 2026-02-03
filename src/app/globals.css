@@ -776,7 +776,7 @@ header { position: absolute; top: 0; left: 0; width: 100%; padding-top: 61px; z-
     text-align: center;
     padding-top: 125px;
 }
-.hero-title { margin-bottom: 20px; }
+.hero-title { margin-bottom: 20px; font-size: var(--fs-2);}
 .hero-text { color: var(--white); font-size: var(--fs-5); margin-bottom: 40px; }
 .btn-group { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; }
 
@@ -1724,7 +1724,6 @@ header { position: absolute; top: 0; left: 0; width: 100%; padding-top: 61px; z-
                     .doc-list li:last-child { border-bottom: none; }
                     .doc-list ion-icon { color: var(--bright-navy-blue); font-size: 24px; }
                     .doc-list span { font-size: var(--fs-5); color: var(--gunmetal); }
-            .info-table { }
                 .info-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--gainsboro); }
                     .info-row:last-child { border-bottom: none; }
                     .info-key { font-weight: var(--fw-600); color: var(--gunmetal); }
