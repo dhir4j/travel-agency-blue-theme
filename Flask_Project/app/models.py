@@ -23,6 +23,17 @@ class User(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
+    # Email verification
+    email_verified = db.Column(db.Boolean, default=False)
+
+    # OTP fields
+    otp_session_id = db.Column(db.String(255), nullable=True)
+    otp_created_at = db.Column(db.DateTime, nullable=True)
+
+    # Remember Me token fields
+    remember_token = db.Column(db.Text, nullable=True)
+    remember_token_expires = db.Column(db.DateTime, nullable=True)
+
     # Relationships
     bookings = db.relationship('Booking', backref='user', lazy=True, cascade="all, delete-orphan")
 

@@ -33,6 +33,13 @@ class Config:
         "*"  # For development - restrict in production
     ]
 
+    # Resend Email OTP Configuration
+    RESEND_API_KEY = os.getenv("RESEND_API_KEY", "")
+
+    # JWT Configuration for Remember Me
+    JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY", SECRET_KEY)
+    JWT_EXPIRY_DAYS = 30
+
     # Upload folder for invoices/documents
     UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'uploads')
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB max file size
