@@ -18,7 +18,12 @@ def signup():
     try:
         user_data = schema.load(data)
     except Exception as e:
-        return jsonify({"error": e.messages}), 400
+        errors = getattr(e, 'messages', None)
+        if errors:
+            msg = "; ".join(f"{k}: {', '.join(v)}" for k, v in errors.items())
+        else:
+            msg = str(e)
+        return jsonify({"error": msg}), 400
 
     if User.query.filter_by(email=user_data["email"]).first():
         return jsonify({"error": "Email already exists"}), 409
@@ -67,14 +72,19 @@ def signup():
 
 @auth_bp.route("/login", methods=["POST"])
 def login():
-    """Login user with email and password, then send OTP"""
+    """Login user with email and password"""
     data = request.get_json()
     schema = LoginSchema()
 
     try:
         credentials = schema.load(data)
     except Exception as e:
-        return jsonify({"error": e.messages}), 400
+        errors = getattr(e, 'messages', None)
+        if errors:
+            msg = "; ".join(f"{k}: {', '.join(v)}" for k, v in errors.items())
+        else:
+            msg = str(e)
+        return jsonify({"error": msg}), 400
 
     user = User.query.filter_by(email=credentials["email"]).first()
 
@@ -83,34 +93,30 @@ def login():
 
     # Check if email is verified
     if not user.email_verified:
-        otp = EmailOTPService.generate_otp()
-        user.otp_session_id = EmailOTPService.hash_otp(otp)
-        user.otp_created_at = datetime.utcnow()
-        db.session.commit()
-        EmailOTPService.send_otp_email(user.email, otp)
-
         return jsonify({
-            "error": "Email not verified. A new verification code has been sent.",
-            "requiresVerification": True,
-            "email": user.email,
+            "error": "Email not verified. Please sign up again or verify your email.",
         }), 403
 
-    # Generate and send OTP for login verification
-    otp = EmailOTPService.generate_otp()
-    user.otp_session_id = EmailOTPService.hash_otp(otp)
-    user.otp_created_at = datetime.utcnow()
-    db.session.commit()
+    # Direct login — no OTP required
+    response_data = {
+        "message": "Login successful",
+        "user": user.to_dict(),
+    }
 
-    result = EmailOTPService.send_otp_email(user.email, otp)
+    # Handle remember me token
+    if data.get("rememberMe"):
+        jwt_service = JWTService()
+        remember_token, token_expires = jwt_service.generate_remember_token(
+            user.id, user.email
+        )
+        if remember_token:
+            user.remember_token = remember_token
+            user.remember_token_expires = token_expires
+            db.session.commit()
+            response_data["rememberToken"] = remember_token
+            response_data["tokenExpires"] = token_expires.isoformat()
 
-    if not result["success"]:
-        return jsonify({"error": "Failed to send verification email. Please try again."}), 500
-
-    return jsonify({
-        "message": "Verification code sent to your email",
-        "requiresOtp": True,
-        "email": user.email,
-    }), 200
+    return jsonify(response_data), 200
 
 
 @auth_bp.route("/send-otp", methods=["POST"])
@@ -170,8 +176,9 @@ def verify_otp():
         db.session.commit()
 
         return jsonify({
-            "message": "Email verified successfully. You can now sign in.",
+            "message": "Email verified successfully.",
             "verified": True,
+            "user": user.to_dict(),
         }), 200
 
     # Login context — return user session
@@ -255,7 +262,12 @@ def admin_login():
     try:
         credentials = schema.load(data)
     except Exception as e:
-        return jsonify({"error": e.messages}), 400
+        errors = getattr(e, 'messages', None)
+        if errors:
+            msg = "; ".join(f"{k}: {', '.join(v)}" for k, v in errors.items())
+        else:
+            msg = str(e)
+        return jsonify({"error": msg}), 400
 
     user = User.query.filter_by(email=credentials["email"]).first()
 

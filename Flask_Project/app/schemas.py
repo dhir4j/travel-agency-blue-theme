@@ -1,6 +1,9 @@
-from marshmallow import Schema, fields, validate, ValidationError
+from marshmallow import Schema, fields, validate, ValidationError, EXCLUDE
 
 class SignupSchema(Schema):
+    class Meta:
+        unknown = EXCLUDE
+
     email = fields.Email(required=True)
     password = fields.Str(required=True, validate=validate.Length(min=6))
     first_name = fields.Str(required=True, validate=validate.Length(min=1, max=100))
@@ -14,6 +17,9 @@ class SignupSchema(Schema):
 
 
 class LoginSchema(Schema):
+    class Meta:
+        unknown = EXCLUDE
+
     email = fields.Email(required=True)
     password = fields.Str(required=True)
 

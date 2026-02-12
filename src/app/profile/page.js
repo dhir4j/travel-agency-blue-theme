@@ -36,7 +36,6 @@ export default function ProfilePage() {
       const bookingsData = await userAPI.getBookings(currentUser.id)
       setBookings(bookingsData.bookings || [])
 
-      // Calculate stats
       const totalSpent = bookingsData.bookings?.reduce((sum, b) => sum + (b.final_amount || 0), 0) || 0
       const pending = bookingsData.bookings?.filter(b => b.status === 'Pending').length || 0
       const completed = bookingsData.bookings?.filter(b => b.status === 'Completed').length || 0
@@ -68,7 +67,6 @@ export default function ProfilePage() {
 
   const downloadInvoice = async (bookingId) => {
     alert(`Invoice download for booking #${bookingId} will be implemented soon!`)
-    // TODO: Implement PDF generation
   }
 
   if (loading || !user) {
@@ -76,7 +74,7 @@ export default function ProfilePage() {
       <>
         <Header />
         <main style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <div className="loading">
+          <div style={{ textAlign: 'center' }}>
             <ion-icon name="hourglass-outline" style={{ fontSize: '48px', color: 'var(--bright-navy-blue)' }}></ion-icon>
             <p>Loading...</p>
           </div>
@@ -90,19 +88,23 @@ export default function ProfilePage() {
     <>
       <Header />
       <main>
-        {/* Profile Header */}
-        <section className="profile-header">
+        {/* Profile Hero Banner */}
+        <section className="profile-hero">
           <div className="container">
-            <div className="profile-hero">
-              <div className="profile-avatar">
-                <ion-icon name="person-circle"></ion-icon>
+            <div className="hero-content">
+              <div className="hero-user">
+                <div className="hero-avatar">
+                  {user.first_name?.charAt(0)}{user.last_name?.charAt(0)}
+                </div>
+                <div className="hero-info">
+                  <h1>{user.first_name} {user.last_name}</h1>
+                  <div className="hero-meta">
+                    <span><ion-icon name="mail-outline"></ion-icon> {user.email}</span>
+                    {user.phone && <span><ion-icon name="call-outline"></ion-icon> {user.phone}</span>}
+                  </div>
+                </div>
               </div>
-              <div className="profile-info">
-                <h1>{user.first_name} {user.last_name}</h1>
-                <p>{user.email}</p>
-                {user.phone && <p><ion-icon name="call-outline"></ion-icon> {user.phone}</p>}
-              </div>
-              <button className="btn btn-secondary logout-btn" onClick={handleLogout}>
+              <button className="logout-btn" onClick={handleLogout}>
                 <ion-icon name="log-out-outline"></ion-icon>
                 Logout
               </button>
@@ -110,45 +112,42 @@ export default function ProfilePage() {
           </div>
         </section>
 
-        {/* Stats Cards */}
+        {/* Stats */}
         <section className="stats-section">
           <div className="container">
             <div className="stats-grid">
               <div className="stat-card">
-                <div className="stat-icon" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
+                <div className="stat-icon">
                   <ion-icon name="calendar-outline"></ion-icon>
                 </div>
-                <div className="stat-content">
+                <div>
                   <h3>{stats.totalBookings}</h3>
                   <p>Total Bookings</p>
                 </div>
               </div>
-
               <div className="stat-card">
-                <div className="stat-icon" style={{ background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' }}>
+                <div className="stat-icon">
                   <ion-icon name="cash-outline"></ion-icon>
                 </div>
-                <div className="stat-content">
+                <div>
                   <h3>₹{stats.totalSpent.toLocaleString()}</h3>
                   <p>Total Spent</p>
                 </div>
               </div>
-
               <div className="stat-card">
-                <div className="stat-icon" style={{ background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' }}>
+                <div className="stat-icon">
                   <ion-icon name="time-outline"></ion-icon>
                 </div>
-                <div className="stat-content">
+                <div>
                   <h3>{stats.pendingBookings}</h3>
                   <p>Pending</p>
                 </div>
               </div>
-
               <div className="stat-card">
-                <div className="stat-icon" style={{ background: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)' }}>
+                <div className="stat-icon">
                   <ion-icon name="checkmark-done-outline"></ion-icon>
                 </div>
-                <div className="stat-content">
+                <div>
                   <h3>{stats.completedBookings}</h3>
                   <p>Completed</p>
                 </div>
@@ -157,7 +156,7 @@ export default function ProfilePage() {
           </div>
         </section>
 
-        {/* Tabs Section */}
+        {/* Tabs */}
         <section className="profile-content">
           <div className="container">
             <div className="tabs-container">
@@ -167,14 +166,14 @@ export default function ProfilePage() {
                   onClick={() => setActiveTab('overview')}
                 >
                   <ion-icon name="person-outline"></ion-icon>
-                  Profile Overview
+                  Profile
                 </button>
                 <button
                   className={`tab-btn ${activeTab === 'bookings' ? 'active' : ''}`}
                   onClick={() => setActiveTab('bookings')}
                 >
                   <ion-icon name="bag-outline"></ion-icon>
-                  My Bookings
+                  Bookings
                 </button>
                 <button
                   className={`tab-btn ${activeTab === 'invoices' ? 'active' : ''}`}
@@ -185,29 +184,29 @@ export default function ProfilePage() {
                 </button>
               </div>
 
-              <div className="tabs-content">
-                {/* Overview Tab */}
+              <div className="tabs-body">
+                {/* Overview */}
                 {activeTab === 'overview' && (
                   <div className="tab-panel">
                     <h2>Profile Information</h2>
                     <div className="info-grid">
-                      <div className="info-item">
+                      <div className="info-card">
                         <label>First Name</label>
                         <p>{user.first_name}</p>
                       </div>
-                      <div className="info-item">
+                      <div className="info-card">
                         <label>Last Name</label>
                         <p>{user.last_name}</p>
                       </div>
-                      <div className="info-item">
+                      <div className="info-card">
                         <label>Email</label>
                         <p>{user.email}</p>
                       </div>
-                      <div className="info-item">
+                      <div className="info-card">
                         <label>Phone</label>
                         <p>{user.phone || 'Not provided'}</p>
                       </div>
-                      <div className="info-item full-width">
+                      <div className="info-card full-width">
                         <label>Address</label>
                         <p>
                           {user.address?.street && `${user.address.street}, `}
@@ -221,13 +220,13 @@ export default function ProfilePage() {
                   </div>
                 )}
 
-                {/* Bookings Tab */}
+                {/* Bookings */}
                 {activeTab === 'bookings' && (
                   <div className="tab-panel">
                     <h2>My Bookings</h2>
                     {bookings.length === 0 ? (
                       <div className="empty-state">
-                        <ion-icon name="bag-outline"></ion-icon>
+                        <ion-icon name="airplane-outline"></ion-icon>
                         <h3>No Bookings Yet</h3>
                         <p>Start your adventure by booking a tour!</p>
                         <a href="/tours" className="btn btn-primary">Browse Tours</a>
@@ -236,36 +235,48 @@ export default function ProfilePage() {
                       <div className="bookings-list">
                         {bookings.map((booking) => (
                           <div key={booking.id} className="booking-card">
-                            <div className="booking-header">
+                            <div className="booking-top">
                               <div>
                                 <h3>{booking.package_name}</h3>
-                                <p className="booking-id">Booking ID: {booking.booking_id}</p>
+                                <span className="booking-id">#{booking.booking_id}</span>
                               </div>
-                              <span className={`status-badge status-${booking.status.toLowerCase()}`}>
+                              <span className={`badge badge-${booking.status.toLowerCase()}`}>
                                 {booking.status}
                               </span>
                             </div>
-                            <div className="booking-details">
-                              <div className="detail-item">
+                            <div className="booking-grid">
+                              <div className="booking-detail">
                                 <ion-icon name="calendar-outline"></ion-icon>
-                                <span>Travel Date: {new Date(booking.travel_date).toLocaleDateString()}</span>
+                                <div>
+                                  <small>Travel Date</small>
+                                  <span>{new Date(booking.travel_date).toLocaleDateString()}</span>
+                                </div>
                               </div>
-                              <div className="detail-item">
+                              <div className="booking-detail">
                                 <ion-icon name="people-outline"></ion-icon>
-                                <span>{booking.num_adults} Adult(s), {booking.num_children} Child(ren)</span>
+                                <div>
+                                  <small>Guests</small>
+                                  <span>{booking.num_adults} Adult(s), {booking.num_children} Child(ren)</span>
+                                </div>
                               </div>
-                              <div className="detail-item">
+                              <div className="booking-detail">
                                 <ion-icon name="cash-outline"></ion-icon>
-                                <span>₹{booking.final_amount.toLocaleString()}</span>
+                                <div>
+                                  <small>Amount</small>
+                                  <span>₹{booking.final_amount?.toLocaleString()}</span>
+                                </div>
                               </div>
-                              <div className="detail-item">
+                              <div className="booking-detail">
                                 <ion-icon name="card-outline"></ion-icon>
-                                <span>Payment: {booking.payment_status}</span>
+                                <div>
+                                  <small>Payment</small>
+                                  <span>{booking.payment_status}</span>
+                                </div>
                               </div>
                             </div>
                             {booking.special_requests && (
-                              <div className="special-requests">
-                                <strong>Special Requests:</strong> {booking.special_requests}
+                              <div className="special-note">
+                                <strong>Note:</strong> {booking.special_requests}
                               </div>
                             )}
                           </div>
@@ -275,7 +286,7 @@ export default function ProfilePage() {
                   </div>
                 )}
 
-                {/* Invoices Tab */}
+                {/* Invoices */}
                 {activeTab === 'invoices' && (
                   <div className="tab-panel">
                     <h2>Invoices</h2>
@@ -288,30 +299,25 @@ export default function ProfilePage() {
                     ) : (
                       <div className="invoices-list">
                         {bookings.map((booking) => (
-                          <div key={booking.id} className="invoice-card">
-                            <div className="invoice-header">
-                              <div>
-                                <h4>Invoice #{booking.booking_id}</h4>
-                                <p>{booking.package_name}</p>
-                                <p className="invoice-date">
-                                  Booked: {new Date(booking.booking_date).toLocaleDateString()}
-                                </p>
-                              </div>
-                              <div className="invoice-amount">
-                                <p className="amount-label">Total Amount</p>
-                                <p className="amount-value">₹{booking.final_amount.toLocaleString()}</p>
-                              </div>
+                          <div key={booking.id} className="invoice-row">
+                            <div className="invoice-left">
+                              <h4>#{booking.booking_id}</h4>
+                              <p className="invoice-pkg">{booking.package_name}</p>
+                              <p className="invoice-date">
+                                {new Date(booking.booking_date).toLocaleDateString()}
+                              </p>
                             </div>
-                            <div className="invoice-footer">
-                              <span className={`payment-badge payment-${booking.payment_status.toLowerCase()}`}>
+                            <div className="invoice-right">
+                              <span className={`badge badge-${booking.payment_status.toLowerCase()}`}>
                                 {booking.payment_status}
                               </span>
+                              <p className="invoice-amount">₹{booking.final_amount?.toLocaleString()}</p>
                               <button
-                                className="btn btn-secondary btn-sm"
+                                className="download-btn"
                                 onClick={() => downloadInvoice(booking.id)}
                               >
                                 <ion-icon name="download-outline"></ion-icon>
-                                Download PDF
+                                PDF
                               </button>
                             </div>
                           </div>
@@ -329,98 +335,149 @@ export default function ProfilePage() {
       <GoTop />
 
       <style jsx>{`
-        .profile-header {
-          padding: 140px 0 60px;
-          background: linear-gradient(135deg, var(--bright-navy-blue) 0%, var(--yale-blue) 100%);
-        }
-
+        /* ── Hero Banner ── */
         .profile-hero {
+          background-image: url("https://i.postimg.cc/D0c2FLPM/hero-banner.jpg");
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          background-color: hsla(0, 0%, 0%, 0.7);
+          background-blend-mode: overlay;
+          padding: 180px 0 80px;
+          color: var(--white);
+        }
+
+        .hero-content {
           display: flex;
+          justify-content: space-between;
           align-items: center;
-          gap: 30px;
           flex-wrap: wrap;
+          gap: 20px;
         }
 
-        .profile-avatar {
-          font-size: 100px;
-          color: var(--white);
-        }
-
-        .profile-info {
-          flex: 1;
-          color: var(--white);
-        }
-
-        .profile-info h1 {
-          font-size: var(--fs-1);
-          margin-bottom: 8px;
-        }
-
-        .profile-info p {
-          opacity: 0.9;
+        .hero-user {
           display: flex;
           align-items: center;
-          gap: 8px;
-          margin-bottom: 4px;
+          gap: 24px;
+        }
+
+        .hero-avatar {
+          width: 72px;
+          height: 72px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.2);
+          backdrop-filter: blur(10px);
+          border: 2px solid rgba(255, 255, 255, 0.4);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 24px;
+          font-weight: 700;
+          letter-spacing: 1px;
+          color: var(--white);
+          flex-shrink: 0;
+        }
+
+        .hero-info h1 {
+          font-size: clamp(24px, 3vw, 36px);
+          margin-bottom: 8px;
+          font-weight: 700;
+        }
+
+        .hero-meta {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+        }
+
+        .hero-meta span {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 14px;
+          opacity: 0.85;
+        }
+
+        .hero-meta ion-icon {
+          font-size: 16px;
         }
 
         .logout-btn {
           display: flex;
           align-items: center;
           gap: 8px;
+          padding: 10px 24px;
+          border-radius: 100px;
+          border: 2px solid rgba(255, 255, 255, 0.5);
+          background: transparent;
+          color: var(--white);
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: var(--transition);
         }
 
+        .logout-btn:hover {
+          background: rgba(255, 255, 255, 0.15);
+          border-color: var(--white);
+        }
+
+        /* ── Stats ── */
         .stats-section {
-          padding: 60px 0;
+          padding: 50px 0;
           background: var(--cultured);
         }
 
         .stats-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 30px;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 24px;
         }
 
         .stat-card {
           background: var(--white);
-          padding: 30px;
+          padding: 28px 24px;
           border-radius: var(--radius-25);
           display: flex;
           align-items: center;
-          gap: 20px;
+          gap: 18px;
           box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
           transition: var(--transition);
         }
 
         .stat-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+          transform: translateY(-4px);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
         }
 
         .stat-icon {
-          width: 70px;
-          height: 70px;
-          border-radius: 50%;
+          width: 56px;
+          height: 56px;
+          border-radius: 16px;
+          background: linear-gradient(135deg, var(--bright-navy-blue), var(--yale-blue));
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 32px;
+          font-size: 26px;
           color: var(--white);
+          flex-shrink: 0;
         }
 
-        .stat-content h3 {
-          font-size: var(--fs-2);
+        .stat-card h3 {
+          font-size: 22px;
           color: var(--oxford-blue);
-          margin-bottom: 4px;
+          margin-bottom: 2px;
         }
 
-        .stat-content p {
+        .stat-card p {
+          font-size: 13px;
           color: var(--spanish-gray);
-          font-size: var(--fs-5);
         }
 
+        /* ── Tabs ── */
         .profile-content {
-          padding: 60px 0;
+          padding: 0 0 80px;
+          background: var(--cultured);
         }
 
         .tabs-container {
@@ -433,295 +490,322 @@ export default function ProfilePage() {
         .tabs-header {
           display: flex;
           border-bottom: 2px solid var(--gainsboro);
-          overflow-x: auto;
         }
 
         .tab-btn {
           flex: 1;
-          padding: 20px 30px;
+          padding: 18px 24px;
           border: none;
           background: transparent;
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 10px;
+          gap: 8px;
           font-size: var(--fs-5);
-          font-weight: var(--fw-600);
+          font-weight: 600;
           color: var(--spanish-gray);
           transition: var(--transition);
           white-space: nowrap;
+          position: relative;
         }
 
         .tab-btn:hover {
-          background: var(--cultured);
+          color: var(--bright-navy-blue);
+          background: rgba(74, 144, 226, 0.04);
         }
 
         .tab-btn.active {
           color: var(--bright-navy-blue);
-          border-bottom: 3px solid var(--bright-navy-blue);
         }
 
-        .tabs-content {
-          padding: 40px;
+        .tab-btn.active::after {
+          content: "";
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: var(--bright-navy-blue);
+          border-radius: 3px 3px 0 0;
+        }
+
+        .tabs-body {
+          padding: 36px;
         }
 
         .tab-panel h2 {
-          font-size: var(--fs-2);
+          font-size: 20px;
           color: var(--oxford-blue);
-          margin-bottom: 30px;
+          margin-bottom: 24px;
         }
 
+        /* ── Info Grid ── */
         .info-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 25px;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
         }
 
-        .info-item {
+        .info-card {
           padding: 20px;
           background: var(--cultured);
           border-radius: var(--radius-15);
         }
 
-        .info-item.full-width {
+        .info-card.full-width {
           grid-column: 1 / -1;
         }
 
-        .info-item label {
+        .info-card label {
           display: block;
-          font-size: var(--fs-7);
+          font-size: 11px;
           color: var(--spanish-gray);
           text-transform: uppercase;
           letter-spacing: 1px;
-          margin-bottom: 8px;
+          margin-bottom: 6px;
+          font-weight: 600;
         }
 
-        .info-item p {
-          font-size: var(--fs-4);
+        .info-card p {
+          font-size: 15px;
           color: var(--oxford-blue);
-          font-weight: var(--fw-600);
+          font-weight: 600;
         }
 
+        /* ── Empty State ── */
         .empty-state {
           text-align: center;
-          padding: 80px 20px;
+          padding: 60px 20px;
         }
 
         .empty-state ion-icon {
-          font-size: 80px;
-          color: var(--spanish-gray);
-          margin-bottom: 20px;
+          font-size: 64px;
+          color: var(--gainsboro);
+          margin-bottom: 16px;
         }
 
         .empty-state h3 {
-          font-size: var(--fs-2);
+          font-size: 18px;
           color: var(--oxford-blue);
-          margin-bottom: 10px;
+          margin-bottom: 8px;
         }
 
         .empty-state p {
           color: var(--spanish-gray);
           margin-bottom: 20px;
+          font-size: 14px;
         }
 
+        /* ── Badges ── */
+        .badge {
+          padding: 5px 14px;
+          border-radius: 20px;
+          font-size: 12px;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .badge-pending { background: #fef3cd; color: #856404; }
+        .badge-confirmed { background: #d1ecf1; color: #0c5460; }
+        .badge-completed { background: #d4edda; color: #155724; }
+        .badge-cancelled { background: #f8d7da; color: #721c24; }
+        .badge-unpaid { background: #f8d7da; color: #721c24; }
+        .badge-partial { background: #fef3cd; color: #856404; }
+        .badge-paid { background: #d4edda; color: #155724; }
+
+        /* ── Bookings ── */
         .bookings-list {
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 16px;
         }
 
         .booking-card {
-          padding: 25px;
-          border: 2px solid var(--gainsboro);
+          padding: 24px;
+          border: 1px solid var(--gainsboro);
           border-radius: var(--radius-15);
           transition: var(--transition);
         }
 
         .booking-card:hover {
           border-color: var(--bright-navy-blue);
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
         }
 
-        .booking-header {
+        .booking-top {
           display: flex;
           justify-content: space-between;
-          align-items: start;
-          margin-bottom: 20px;
+          align-items: flex-start;
+          margin-bottom: 18px;
+          gap: 12px;
           flex-wrap: wrap;
-          gap: 15px;
         }
 
-        .booking-header h3 {
-          font-size: var(--fs-4);
+        .booking-top h3 {
+          font-size: 16px;
           color: var(--oxford-blue);
-          margin-bottom: 5px;
+          margin-bottom: 4px;
         }
 
         .booking-id {
-          font-size: var(--fs-6);
+          font-size: 12px;
           color: var(--spanish-gray);
         }
 
-        .status-badge {
-          padding: 8px 16px;
-          border-radius: 20px;
-          font-size: var(--fs-7);
-          font-weight: var(--fw-600);
-          text-transform: uppercase;
-        }
-
-        .status-pending {
-          background: #fff3cd;
-          color: #856404;
-        }
-
-        .status-confirmed {
-          background: #d1ecf1;
-          color: #0c5460;
-        }
-
-        .status-completed {
-          background: #d4edda;
-          color: #155724;
-        }
-
-        .status-cancelled {
-          background: #f8d7da;
-          color: #721c24;
-        }
-
-        .booking-details {
+        .booking-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 15px;
-          margin-bottom: 15px;
+          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+          gap: 16px;
         }
 
-        .detail-item {
+        .booking-detail {
           display: flex;
-          align-items: center;
-          gap: 8px;
-          color: var(--gunmetal);
-          font-size: var(--fs-6);
+          align-items: flex-start;
+          gap: 10px;
         }
 
-        .detail-item ion-icon {
-          color: var(--bright-navy-blue);
+        .booking-detail ion-icon {
           font-size: 20px;
+          color: var(--bright-navy-blue);
+          margin-top: 2px;
+          flex-shrink: 0;
         }
 
-        .special-requests {
-          padding: 15px;
+        .booking-detail small {
+          display: block;
+          font-size: 11px;
+          color: var(--spanish-gray);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          margin-bottom: 2px;
+        }
+
+        .booking-detail span {
+          font-size: 14px;
+          color: var(--gunmetal);
+          font-weight: 500;
+        }
+
+        .special-note {
+          margin-top: 16px;
+          padding: 12px 16px;
           background: var(--cultured);
-          border-radius: var(--radius-15);
-          font-size: var(--fs-6);
+          border-radius: 10px;
+          font-size: 13px;
           color: var(--gunmetal);
         }
 
+        /* ── Invoices ── */
         .invoices-list {
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 12px;
         }
 
-        .invoice-card {
-          border: 2px solid var(--gainsboro);
-          border-radius: var(--radius-15);
-          overflow: hidden;
-        }
-
-        .invoice-header {
-          padding: 25px;
-          background: var(--cultured);
+        .invoice-row {
           display: flex;
           justify-content: space-between;
-          align-items: start;
+          align-items: center;
+          padding: 20px 24px;
+          border: 1px solid var(--gainsboro);
+          border-radius: var(--radius-15);
+          transition: var(--transition);
           flex-wrap: wrap;
-          gap: 20px;
+          gap: 16px;
         }
 
-        .invoice-header h4 {
-          font-size: var(--fs-4);
+        .invoice-row:hover {
+          border-color: var(--bright-navy-blue);
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .invoice-left h4 {
+          font-size: 15px;
           color: var(--oxford-blue);
-          margin-bottom: 5px;
+          margin-bottom: 4px;
         }
 
-        .invoice-header p {
-          font-size: var(--fs-6);
-          color: var(--spanish-gray);
+        .invoice-pkg {
+          font-size: 13px;
+          color: var(--gunmetal);
+          margin-bottom: 2px;
         }
 
         .invoice-date {
-          margin-top: 5px;
-          font-size: var(--fs-7);
+          font-size: 12px;
+          color: var(--spanish-gray);
+        }
+
+        .invoice-right {
+          display: flex;
+          align-items: center;
+          gap: 16px;
         }
 
         .invoice-amount {
-          text-align: right;
-        }
-
-        .amount-label {
-          font-size: var(--fs-7);
-          color: var(--spanish-gray);
-          text-transform: uppercase;
-        }
-
-        .amount-value {
-          font-size: var(--fs-2);
+          font-size: 18px;
+          font-weight: 700;
           color: var(--bright-navy-blue);
-          font-weight: var(--fw-700);
         }
 
-        .invoice-footer {
-          padding: 20px 25px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          flex-wrap: wrap;
-          gap: 15px;
-        }
-
-        .payment-badge {
-          padding: 6px 14px;
-          border-radius: 15px;
-          font-size: var(--fs-7);
-          font-weight: var(--fw-600);
-          text-transform: uppercase;
-        }
-
-        .payment-unpaid {
-          background: #f8d7da;
-          color: #721c24;
-        }
-
-        .payment-partial {
-          background: #fff3cd;
-          color: #856404;
-        }
-
-        .payment-paid {
-          background: #d4edda;
-          color: #155724;
-        }
-
-        .btn-sm {
-          padding: 10px 20px;
-          font-size: var(--fs-6);
+        .download-btn {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 5px;
+          padding: 8px 16px;
+          border-radius: 100px;
+          border: 2px solid var(--bright-navy-blue);
+          background: transparent;
+          color: var(--bright-navy-blue);
+          font-size: 13px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: var(--transition);
+        }
+
+        .download-btn:hover {
+          background: var(--bright-navy-blue);
+          color: var(--white);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 992px) {
+          .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
 
         @media (max-width: 768px) {
           .profile-hero {
+            padding: 140px 0 60px;
+          }
+
+          .hero-content {
             flex-direction: column;
-            text-align: center;
+            align-items: flex-start;
+          }
+
+          .hero-user {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+          }
+
+          .hero-meta {
+            flex-direction: column;
+            gap: 8px;
           }
 
           .logout-btn {
             width: 100%;
             justify-content: center;
+          }
+
+          .stats-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
           }
 
           .tabs-header {
@@ -730,20 +814,39 @@ export default function ProfilePage() {
 
           .tab-btn {
             justify-content: flex-start;
+            padding: 14px 20px;
           }
 
-          .tabs-content {
+          .tab-btn.active::after {
+            display: none;
+          }
+
+          .tab-btn.active {
+            background: rgba(74, 144, 226, 0.08);
+          }
+
+          .tabs-body {
             padding: 20px;
           }
 
-          .booking-header,
-          .invoice-header,
-          .invoice-footer {
-            flex-direction: column;
+          .info-grid {
+            grid-template-columns: 1fr;
           }
 
-          .invoice-amount {
-            text-align: left;
+          .invoice-row {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
+          .invoice-right {
+            width: 100%;
+            justify-content: space-between;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .stats-grid {
+            grid-template-columns: 1fr;
           }
         }
       `}</style>

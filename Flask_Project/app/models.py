@@ -95,7 +95,7 @@ class Booking(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     # Additional data (flexible storage)
-    metadata = db.Column(JSONB, default=dict)
+    extra_data = db.Column('metadata', JSONB, default=dict)
 
     # Relationships
     invoice = db.relationship('Invoice', backref='booking', uselist=False, cascade="all, delete-orphan")
@@ -125,7 +125,7 @@ class Booking(db.Model):
             "notes": self.notes,
             "booking_date": self.booking_date.isoformat() if self.booking_date else None,
             "updated_at": self.updated_at.isoformat() if self.updated_at else None,
-            "metadata": self.metadata
+            "metadata": self.extra_data
         }
 
 

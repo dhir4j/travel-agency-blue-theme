@@ -109,11 +109,9 @@ function SignupForm() {
         context: 'signup',
       })
 
-      if (data.verified) {
-        setStep('success')
-        setTimeout(() => {
-          router.push('/auth/login')
-        }, 2000)
+      if (data.verified && data.user) {
+        session.setUser(data.user)
+        router.push('/profile')
       }
     } catch (err) {
       setOtpError(err.message || 'Invalid verification code')
@@ -133,40 +131,6 @@ function SignupForm() {
     } catch (err) {
       setOtpError('Failed to resend code. Please try again.')
     }
-  }
-
-  // Success screen
-  if (step === 'success') {
-    return (
-      <>
-        <Header />
-        <main>
-          <section className="auth-hero">
-            <div className="container">
-              <div className="auth-center">
-                <div className="auth-glass-card auth-glass-card--narrow">
-                  <div className="auth-form-section auth-form-section--centered">
-                    <div className="success-icon">
-                      <ion-icon name="checkmark-circle-outline"></ion-icon>
-                    </div>
-                    <h2>Email Verified!</h2>
-                    <p className="subtitle">
-                      Your account has been verified successfully. Redirecting to sign in...
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </main>
-        <Footer />
-        <GoTop />
-        <style jsx>{`
-          ${sharedStyles}
-          ${otpStyles}
-        `}</style>
-      </>
-    )
   }
 
   // OTP verification screen
@@ -483,6 +447,9 @@ const sharedStyles = `
   .auth-form-section--centered {
     justify-self: center;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .auth-icon {
@@ -500,12 +467,6 @@ const sharedStyles = `
 
   .auth-form-section--centered .auth-icon {
     margin: 0 auto 12px;
-  }
-
-  .success-icon {
-    font-size: 64px;
-    color: #22c55e;
-    margin-bottom: 12px;
   }
 
   .auth-form-section h2 {
@@ -560,6 +521,7 @@ const sharedStyles = `
     font-size: 15px;
     border: none;
     cursor: pointer;
+    width: 100%;
   }
 
   .auth-btn:disabled {

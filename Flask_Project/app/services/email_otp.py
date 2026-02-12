@@ -54,7 +54,7 @@ class EmailOTPService:
 
         try:
             params: resend.Emails.SendParams = {
-                "from": "Waynex Travels <onboarding@resend.dev>",
+                "from": "Waynex Travels <Auth@verify.waynextravels.com>",
                 "to": [email],
                 "subject": "Your Waynex Travels verification code",
                 "html": f"""
