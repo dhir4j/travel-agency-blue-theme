@@ -18,10 +18,7 @@ def create_booking():
     except Exception as e:
         return jsonify({"error": e.messages}), 400
 
-    # Get user_id from request (should be sent from client after login)
-    user_id = data.get("user_id")
-    if not user_id:
-        return jsonify({"error": "user_id is required"}), 400
+    user_id = booking_data["user_id"]
 
     # Verify user exists
     user = User.query.get(user_id)

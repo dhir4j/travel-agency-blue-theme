@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import GoTop from '@/components/GoTop'
-import visaData from '../../../../data/data.json'
+import visaData from '../../../../data/new_data.json'
 
 function VisaApplicationForm() {
   const searchParams = useSearchParams()
@@ -444,7 +444,7 @@ function VisaApplicationForm() {
                     </div>
                     <div className="sidebar-item">
                       <h4>Applied Visa</h4>
-                      <p className="highlight">{visaInfo['Visa Info']['Visa Type'] || 'E-Visa'}</p>
+                      <p className="highlight">{visaInfo['Visa Info']['Visa Type'] || visaInfo['Visa Info']['Type'] || 'E-Visa'}</p>
                       <p className="sub-text">({visaInfo['Visa Info']['Entry'] || 'Single Entry'})</p>
                     </div>
                   </div>

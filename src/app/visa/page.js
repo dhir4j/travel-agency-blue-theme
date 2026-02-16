@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import GoTop from '@/components/GoTop'
-import visaData from '../../../data/data.json'
+import visaData from '../../../data/new_data.json'
 
 export const metadata = {
   title: 'Visa Services - Waynex Tours and Travels',
@@ -10,6 +10,18 @@ export const metadata = {
 }
 
 export default function VisaPage() {
+  const getStartingPrice = (visa) => {
+    const options = visa['Visa Pricing Options'] || []
+    if (options.length === 0) return ''
+    return options[0]['Total Amount'] || options[0]['Pay Now Govt Fee'] || ''
+  }
+
+  const getProcessingTime = (visa) => {
+    const options = visa['Visa Pricing Options'] || []
+    if (options.length === 0) return ''
+    return options[0]['Processing Days'] || options[0]['Get on'] || ''
+  }
+
   return (
     <>
       <Header />
@@ -33,21 +45,26 @@ export default function VisaPage() {
           <section className="visa-section-modern">
             <div className="container">
               <div className="visa-cards-grid">
-                {visaData.map((visa, index) => (
-                  <Link key={index} href={`/visa/${visa.Country.toLowerCase().replace(/\s+/g, '-')}`}>
-                    <div className="visa-card-modern-grid">
-                      <div className="card-image-container">
-                        <img src={visa.ImageURL} alt={visa.Country} loading="lazy" />
+                {visaData.map((visa, index) => {
+                  const processingTime = getProcessingTime(visa)
+                  return (
+                    <Link key={index} href={`/visa/${visa.Country.toLowerCase().replace(/\s+/g, '-')}`}>
+                      <div className="visa-card-modern-grid">
+                        <div className="card-image-container">
+                          <img src={visa.ImageURL} alt={visa.Country} loading="lazy" />
+                        </div>
+                        <div className="card-info-container">
+                          <h3 className="country-name-grid">{visa.Country}</h3>
+                          {processingTime && (
+                            <p className="visa-timing">
+                              Get on <span className="timing-highlight">{processingTime}</span>
+                            </p>
+                          )}
+                        </div>
                       </div>
-                      <div className="card-info-container">
-                        <h3 className="country-name-grid">{visa.Country}</h3>
-                        <p className="visa-timing">
-                          Get on <span className="timing-highlight">{visa['Get on']}</span>
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
+                    </Link>
+                  )
+                })}
               </div>
             </div>
           </section>

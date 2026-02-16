@@ -36,6 +36,7 @@ class UserUpdateSchema(Schema):
 
 
 class BookingCreateSchema(Schema):
+    user_id = fields.Int(required=True)
     order_type = fields.Str(required=False, missing="tour", validate=validate.OneOf(["tour", "visa"]))
     package_name = fields.Str(required=True, validate=validate.Length(min=1, max=255))
     package_type = fields.Str(required=False, allow_none=True)

@@ -1,0 +1,898 @@
+[
+    {
+        "Country": "United Arab Emirates",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/AE",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/AE.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "60 days",
+            "Entry": "Single",
+            "Method": "Paperless"
+        },
+        "Visa Pricing Options": [
+            {
+                "Processing Time": "Standard",
+                "Processing Days": "2 days",
+                "Pay Now Govt Fee": "₹6,750",
+                "Total Amount": "₹8,249",
+                "Waynex Fee": "₹1,499"
+            },
+            {
+                "Processing Time": "Faster",
+                "Processing Days": "1 day",
+                "Pay Now Govt Fee": "₹9,990",
+                "Total Amount": "₹14,440",
+                "Waynex Fee": "₹4,450"
+            }
+        ]
+    },
+    {
+        "Country": "Thailand",
+        "ImageURL": "https://media.atlys.com/b2c/country_thumbnails/tr:w-800/TH",
+        "Required Docs": [],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/TH.mp4?tr=f-webm",
+        "Visa Info": {
+            "Type": "TDAC",
+            "Length of Stay": "60 days",
+            "Validity": "90 days",
+            "Entry": "Single",
+            "Method": "Paperless",
+            "One-Click Application": "Fastest Process"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Pay Now Govt Fee": "₹1",
+                "Total Amount": "₹800",
+                "Waynex Fee": "₹799"
+            }
+        ]
+    },
+    {
+        "Country": "Switzerland",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/CH",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Length of Stay": "Upto 180 days",
+            "Validity": "Upto 2 years",
+            "Entry": "Multiple"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "33 days",
+                "Pay Now Govt Fee": "₹2,690",
+                "Total Amount": "₹11,180",
+                "Waynex Fee": "₹8,490"
+            }
+        ]
+    },
+    {
+        "Country": "Vietnam",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/VN",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/VN.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "30 days",
+            "Entry": "Single",
+            "Visa Accepted At": "All Ports of Entry",
+            "Method": "Paperless"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Get on": "11 days",
+                "Pay Now Govt Fee": "₹2,450",
+                "Total Amount": "₹4,450",
+                "Waynex Fee": "₹2,000"
+            },
+            {
+                "Type": "Faster",
+                "Processing Days": "1 day",
+                "Pay Now Govt Fee": "₹11,700",
+                "Total Amount": "₹18,999",
+                "Waynex Fee": "₹7,299"
+            }
+        ]
+    },
+    {
+        "Country": "Indonesia",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/ID",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/ID.mp4?tr=f-webm",
+        "Visa Info": {
+            "Type": "Visa",
+            "Length of Stay": "30 days",
+            "Validity": "90 days",
+            "Entry": "Single",
+            "One-Click Application": "Fastest Process"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Pay Now Govt Fee": "₹2,900",
+                "Total Amount": "₹4,395",
+                "Waynex Fee": "₹1,495"
+            }
+        ]
+    },
+    {
+        "Country": "Oman",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/OM",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/OM.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "10 days",
+            "Validity": "90 days",
+            "Entry": "Single",
+            "Method": "Paperless"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Get on": "5 days",
+                "Pay Now Govt Fee": "₹2,700",
+                "Total Amount": "₹4,700",
+                "Waynex Fee": "₹2,000"
+            },
+            {
+                "Type": "Faster",
+                "Processing Days": "1 day",
+                "Pay Now Govt Fee": "₹2,700",
+                "Total Amount": "₹7,200",
+                "Waynex Fee": "₹4,500"
+            }
+        ]
+    },
+    {
+        "Country": "United States",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/US",
+        "Required Docs": [],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/US.mp4?tr=f-webm",
+        "Visa Info": {
+            "Type": "Tourist Visa",
+            "Length of Stay": "Up to 6 months",
+            "Validity": "10 years",
+            "Entry": "Multiple",
+            "Method": "Online Application"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "12 days",
+                "Pay Now Govt Fee": "₹17,400",
+                "Total Amount": "₹36,900",
+                "Waynex Fee": "₹19,500"
+            },
+            {
+                "Type": "Faster",
+                "Processing Days": "4 days",
+                "Pay Now Govt Fee": "₹17,400",
+                "Total Amount": "₹46,900",
+                "Waynex Fee": "₹29,500"
+            },
+            {
+                "Type": "Student",
+                "Processing Days": "76 days",
+                "Pay Now Govt Fee": "₹990",
+                "Total Amount": "₹35,440",
+                "Waynex Fee": "₹34,450"
+            }
+        ]
+    },
+    {
+        "Country": "Hong Kong SAR China",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/HK",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/HK.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "14 days",
+            "Validity": "180 days",
+            "Entry": "Multiple",
+            "Method": "Paperless"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Pay Now Govt Fee": "₹1",
+                "Total Amount": "₹1,496",
+                "Waynex Fee": "₹1,495"
+            }
+        ]
+    },
+    {
+        "Country": "Egypt",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/EG",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/EG.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "90 days",
+            "Entry": "Single",
+            "Method": "Paperless",
+            "Visa Accepted At": "All Ports of Entry"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Get on": "8 days",
+                "Pay Now Govt Fee": "₹2,350",
+                "Total Amount": "₹4,050",
+                "Waynex Fee": "₹1,700"
+            },
+            {
+                "Type": "Faster",
+                "Processing Days": "3 days",
+                "Pay Now Govt Fee": "₹2,300",
+                "Total Amount": "₹7,300",
+                "Waynex Fee": "₹5,000"
+            }
+        ]
+    },
+    {
+        "Country": "Sri Lanka",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/LK",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/LK.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "180 days",
+            "Entry": "Single",
+            "Method": "Paperless",
+            "One-Click Application": "Fastest Process"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Pay Now Govt Fee": "₹1",
+                "Total Amount": "₹600",
+                "Waynex Fee": "₹599"
+            }
+        ]
+    },
+    {
+        "Country": "Georgia",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/GE",
+        "Required Docs": [
+            "Photo",
+            "Passport",
+            "Bank Statement"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/GE.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "120 days",
+            "Entry": "Multiple",
+            "Method": "Paperless"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Pay Now Govt Fee": "₹3,350",
+                "Total Amount": "₹5,850",
+                "Waynex Fee": "₹2,500"
+            }
+        ]
+    },
+    {
+        "Country": "Azerbaijan",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/AZ",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/AZ.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "90 days",
+            "Entry": "Single",
+            "Method": "Paperless"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Get on": "4 days",
+                "Pay Now Govt Fee": "₹2,850",
+                "Total Amount": "₹5,350",
+                "Waynex Fee": "₹2,500"
+            },
+            {
+                "Type": "Faster",
+                "Processing Days": "1 day",
+                "Pay Now Govt Fee": "₹5,450",
+                "Total Amount": "₹9,950",
+                "Waynex Fee": "₹4,500"
+            }
+        ]
+    },
+    {
+        "Country": "France",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/FR",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Length of Stay": "Upto 180 days",
+            "Validity": "Upto 2 years",
+            "Entry": "Multiple"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Get on": "33 days",
+                "Total Amount": "₹10,037"
+            }
+        ]
+    },
+    {
+        "Country": "Malaysia",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/MY",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/MY.mp4?tr=f-webm",
+        "Visa Info": {
+            "Type": "MDAC",
+            "Length of Stay": "30 days",
+            "Validity": "30 days",
+            "Entry": "Single",
+            "Method": "Paperless",
+            "One-Click Application": "Fastest Process"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Pay Now Govt Fee": "₹1",
+                "Total Amount": "₹600",
+                "Waynex Fee": "₹599"
+            }
+        ]
+    },
+    {
+        "Country": "United Kingdom",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/GB",
+        "Required Docs": [],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/GB.mp4?tr=f-webm",
+        "Visa Info": {
+            "Type": "Appointment",
+            "Length of Stay": "180 days",
+            "Validity": "180 days",
+            "Entry": "Multiple"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "35 days",
+                "Pay Now Govt Fee": "₹63,000",
+                "Total Amount": "₹83,500",
+                "Waynex Fee": "₹20,500"
+            },
+            {
+                "Type": "Faster",
+                "Processing Days": "28 days",
+                "Pay Now Govt Fee": "₹16,050",
+                "Total Amount": "₹21,540",
+                "Waynex Fee": "₹5,490"
+            }
+        ]
+    },
+    {
+        "Country": "Australia",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/AU",
+        "Required Docs": [
+            "Passport",
+            "Photo",
+            "Bank Statement",
+            "Income Tax Return (ITR)"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/AU.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "90 days",
+            "Validity": "Upto 3 years",
+            "Entry": "Multiple",
+            "Method": "Paperless"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Get on": "37 days",
+                "Pay Now Govt Fee": "₹13,450",
+                "Total Amount": "₹18,450",
+                "Waynex Fee": "₹5,000"
+            },
+            {
+                "Type": "Faster",
+                "Processing Days": "4 days",
+                "Pay Now Govt Fee": "₹74,700",
+                "Total Amount": "₹92,423",
+                "Waynex Fee": "₹17,723"
+            }
+        ]
+    },
+    {
+        "Country": "Japan",
+        "ImageURL": "https://media.atlys.com/b2c/country_thumbnails/tr:w-800/JP",
+        "Required Docs": [],
+        "Video URL": "https://media.atlys.com/b2c/clp/Japan%20CLP/japan-clp-hero.mp4?updatedAt=1737978971776",
+        "Visa Info": {
+            "Visa Type": "Sticker",
+            "Length of Stay": "Upto 30 days",
+            "Validity": "Upto 90 days",
+            "Entry": "Single"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Pay Now Govt Fee": "₹4,200",
+                "Total Amount": "₹4,200"
+            }
+        ]
+    },
+    {
+        "Country": "China",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/CN",
+        "Required Docs": [
+            "Photo",
+            "Passport",
+            "Bank Statement",
+            "Income Tax Return (ITR)"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/CN.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "Sticker",
+            "Length of Stay": "30 days",
+            "Validity": "90 days",
+            "Entry": "Single"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "24 days",
+                "Pay Now Govt Fee": "₹7,800",
+                "Total Amount": "₹13,300",
+                "Waynex Fee": "₹5,500"
+            }
+        ]
+    },
+    {
+        "Country": "Germany",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/DE",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Validity": "UPTO 2 YEARS",
+            "Length of Stay": "UPTO 180 DAYS"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "55 days",
+                "Pay Now Govt Fee": "₹1,806",
+                "Total Amount": "₹10,296",
+                "Waynex Fee": "₹8,490"
+            }
+        ]
+    },
+    {
+        "Country": "Greece",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/GR",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Length of Stay": "Upto 180 days",
+            "Validity": "Upto 2 years",
+            "Entry": "Multiple"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "33 days",
+                "Pay Now Govt Fee": "₹1,900",
+                "Total Amount": "₹10,390",
+                "Waynex Fee": "₹8,490"
+            }
+        ]
+    },
+    {
+        "Country": "South Korea",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/KR",
+        "Required Docs": [
+            "Photo",
+            "Passport",
+            "Flight Details",
+            "Hotel Details",
+            "Bank Statement"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/KR.mp4?tr=f-webm",
+        "Visa Info": {},
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "25 days",
+                "Pay Now Govt Fee": "₹4,780",
+                "Total Amount": "₹6,460",
+                "Waynex Fee": "₹1,680"
+            }
+        ]
+    },
+    {
+        "Country": "Spain",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/ES",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Validity": "UPTO 2 YEARS",
+            "Length of Stay": "UPTO 180 DAYS"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "47 days",
+                "Pay Now Govt Fee": "₹1,850",
+                "Total Amount": "₹10,340",
+                "Waynex Fee": "₹8,490"
+            }
+        ]
+    },
+    {
+        "Country": "Canada",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/CA",
+        "Required Docs": [],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/CA.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "Sticker",
+            "Length of Stay": "180 days",
+            "Validity": "10 years",
+            "Entry": "Multiple"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "64 days",
+                "Pay Now Govt Fee": "₹12,700",
+                "Total Amount": "₹20,700",
+                "Waynex Fee": "₹8,000"
+            }
+        ]
+    },
+    {
+        "Country": "Austria",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/AT",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Length of Stay": "Upto 180 days",
+            "Validity": "Upto 2 years",
+            "Entry": "Multiple"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "27 days",
+                "Pay Now Govt Fee": "₹2,274",
+                "Total Amount": "₹10,764",
+                "Waynex Fee": "₹8,490"
+            }
+        ]
+    },
+    {
+        "Country": "Netherlands",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/NL",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Validity": "Up to 2 years",
+            "Length of Stay": "Up to 180 days"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "43 days",
+                "Pay Now Govt Fee": "₹1,700",
+                "Total Amount": "₹10,190",
+                "Waynex Fee": "₹8,490"
+            }
+        ]
+    },
+    {
+        "Country": "Russia",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/RU",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/RU.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "Upto 30 days",
+            "Validity": "120 days",
+            "Entry": "Single",
+            "Method": "Paperless"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "9 days",
+                "Pay Now Govt Fee": "₹6,720",
+                "Total Amount": "₹11,220",
+                "Waynex Fee": "₹4,500"
+            }
+        ]
+    },
+    {
+        "Country": "New Zealand",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/NZ",
+        "Required Docs": [
+            "Photo",
+            "Passport",
+            "Bank Statement",
+            "Income Tax Return (ITR)"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/NZ.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "180 days",
+            "Validity": "1 years",
+            "Entry": "Single",
+            "Method": "Paperless"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "26 days",
+                "Pay Now Govt Fee": "₹24,850",
+                "Total Amount": "₹30,300",
+                "Waynex Fee": "₹5,450"
+            }
+        ]
+    },
+    {
+        "Country": "Armenia",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/AM",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/AM.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "21 days",
+            "Validity": "90 days",
+            "Entry": "Single",
+            "Method": "Paperless"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "15 days",
+                "Pay Now Govt Fee": "₹18,000",
+                "Total Amount": "₹23,000",
+                "Pay Later Waynex Fee": "₹5,000"
+            }
+        ]
+    },
+    {
+        "Country": "Taiwan",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/TW",
+        "Required Docs": [],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/TW.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "14 days",
+            "Validity": "90 days",
+            "Entry": "Multiple",
+            "Method": "Paperless"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "7 days",
+                "Pay Now Govt Fee": "₹1",
+                "Total Amount": "₹1,500",
+                "Waynex Fee": "₹1,499"
+            }
+        ]
+    },
+    {
+        "Country": "Philippines",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/PH",
+        "Required Docs": [
+            "Photo",
+            "Passport",
+            "Flight Details",
+            "Hotel Details",
+            "Bank Statement",
+            "Income Tax Return (ITR)"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/PH.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "90 days",
+            "Entry": "Single",
+            "Method": "Paperless"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "31 days",
+                "Pay Now Govt Fee": "₹6,240",
+                "Total Amount": "₹8,240",
+                "Waynex Fee": "₹2,000"
+            }
+        ]
+    },
+    {
+        "Country": "Belgium",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/BE",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Length of Stay": "Upto 180 days",
+            "Validity": "Upto 2 years",
+            "Entry": "Multiple"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "46 days",
+                "Pay Now Govt Fee": "₹2,475",
+                "Total Amount": "₹10,965",
+                "Waynex Fee": "₹8,490"
+            }
+        ]
+    },
+    {
+        "Country": "Brazil",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/BR",
+        "Required Docs": [
+            "Photo",
+            "Passport",
+            "Flight Details",
+            "Bank Statement",
+            "Income Tax Return (ITR)",
+            "Hotel Details"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/BR.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "Sticker",
+            "Length of Stay": "30 days",
+            "Validity": "90 days",
+            "Entry": "Single"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "70 days",
+                "Pay Now Govt Fee": "₹8,490",
+                "Total Amount": "₹11,822",
+                "Waynex Fee": "₹3,332"
+            }
+        ]
+    },
+    {
+        "Country": "Qatar",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/QA",
+        "Required Docs": [
+            "Passport"
+        ],
+        "Video URL": "https://media.atlys.com/b2c/clp/country-landing-page-videos/QA.mp4?tr=f-webm",
+        "Visa Info": {
+            "Visa Type": "E-Visa",
+            "Length of Stay": "30 days",
+            "Validity": "90 days",
+            "Entry": "Single",
+            "Method": "Paperless"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "3 days",
+                "Pay Now Govt Fee": "₹900",
+                "Total Amount": "₹2,650",
+                "Waynex Fee": "₹1,750"
+            }
+        ]
+    },
+    {
+        "Country": "Finland",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/FI",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Validity": "UPTO 2 YEARS",
+            "Max Stay": "UPTO 180 DAYS",
+            "Access to": "29 COUNTRIES"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "35 days",
+                "Pay Now Govt Fee": "₹2,623",
+                "Total Amount": "₹11,113",
+                "Waynex Fee": "₹8,490"
+            }
+        ]
+    },
+    {
+        "Country": "Hungary",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/HU",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Length of Stay": "Upto 180 days",
+            "Validity": "Upto 2 years",
+            "Entry": "Multiple"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "33 days",
+                "Pay Now Govt Fee": "₹1,784",
+                "Total Amount": "₹10,274",
+                "Waynex Fee": "₹8,490"
+            }
+        ]
+    },
+    {
+        "Country": "Iceland",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/IS",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Validity": "UPTO 2 YEARS",
+            "Length of Stay": "UPTO 180 DAYS"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "33 days",
+                "Pay Now Govt Fee": "₹2,900",
+                "Total Amount": "₹11,390",
+                "Waynex Fee": "₹8,490"
+            }
+        ]
+    },
+    {
+        "Country": "Croatia",
+        "ImageURL": "https://media.atlys.com/image/upload/f_auto,w_800/country_thumbnails/HR",
+        "Required Docs": [],
+        "Video URL": null,
+        "Visa Info": {
+            "Length of Stay": "Upto 180 days",
+            "Validity": "Upto 2 years",
+            "Entry": "Multiple"
+        },
+        "Visa Pricing Options": [
+            {
+                "Type": "Standard",
+                "Processing Days": "33 days",
+                "Pay Now Govt Fee": "₹2,000",
+                "Total Amount": "₹10,490",
+                "Waynex Fee": "₹8,490"
+            }
+        ]
+    }
+]

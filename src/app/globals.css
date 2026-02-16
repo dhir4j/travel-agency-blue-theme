@@ -2363,6 +2363,216 @@ header { position: absolute; top: 0; left: 0; width: 100%; padding-top: 61px; z-
     margin-bottom: 0;
 }
 
+/* USA Category Selector */
+.usa-category-selector {
+    margin-bottom: 20px;
+}
+
+.category-label {
+    display: block;
+    font-size: 13px;
+    font-weight: var(--fw-600);
+    color: var(--spanish-gray);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.category-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.category-tab {
+    padding: 8px 16px;
+    border: 2px solid var(--gainsboro);
+    border-radius: 8px;
+    background: var(--white);
+    font-size: 13px;
+    font-weight: var(--fw-600);
+    color: var(--gunmetal);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.category-tab:hover {
+    border-color: var(--bright-navy-blue);
+    color: var(--bright-navy-blue);
+}
+
+.category-tab.active {
+    background: var(--bright-navy-blue);
+    border-color: var(--bright-navy-blue);
+    color: var(--white);
+}
+
+/* Processing Speed Tabs */
+.processing-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid var(--bright-navy-blue);
+}
+
+.processing-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 10px;
+    background: var(--white);
+    border: none;
+    font-size: 12px;
+    font-weight: var(--fw-600);
+    color: var(--bright-navy-blue);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.processing-tab ion-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.processing-tab.active {
+    background: var(--bright-navy-blue);
+    color: var(--white);
+}
+
+.processing-tab:not(:last-child) {
+    border-right: 1px solid var(--bright-navy-blue);
+}
+
+.student-tab {
+    background: linear-gradient(135deg, #f0e6ff, #f8f4ff);
+    color: #7209b7;
+}
+
+.student-tab ion-icon {
+    color: #7209b7;
+}
+
+/* Travellers Section */
+.travellers-section {
+    padding: 16px 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--gainsboro);
+}
+
+.travellers-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.travellers-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: var(--fw-700);
+    color: var(--gunmetal);
+}
+
+.travellers-label ion-icon {
+    font-size: 20px;
+}
+
+.travellers-counter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.counter-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gunmetal);
+    transition: color 0.2s ease;
+}
+
+.counter-btn:hover:not(:disabled) {
+    color: var(--bright-navy-blue);
+}
+
+.counter-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.counter-btn ion-icon {
+    font-size: 26px;
+}
+
+.counter-value {
+    font-size: 16px;
+    font-weight: var(--fw-700);
+    color: var(--gunmetal);
+    min-width: 24px;
+    text-align: center;
+}
+
+/* Payment Amount with strikethrough */
+.payment-amount-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+.payment-amount-old {
+    font-size: 13px;
+    color: var(--spanish-gray);
+    text-decoration: line-through;
+}
+
+/* Total Amount with icon */
+.total-label-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.total-label-wrap ion-icon {
+    font-size: 20px;
+}
+
+/* Unlock Lower Price */
+.unlock-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 0;
+    margin-bottom: 20px;
+}
+
+.unlock-price ion-icon {
+    font-size: 14px;
+    color: var(--bright-navy-blue);
+}
+
+.unlock-price a {
+    font-size: 13px;
+    color: var(--bright-navy-blue);
+    font-weight: var(--fw-600);
+    text-decoration: underline;
+}
+
+.unlock-price a:hover {
+    color: var(--yale-blue);
+}
+
 /* Visa Application Form - Updated Theme */
 
 .application-hero {

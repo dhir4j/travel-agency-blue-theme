@@ -7,7 +7,7 @@ import Gallery from '@/components/Gallery'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 import GoTop from '@/components/GoTop'
-import visaData from '../../data/data.json'
+import visaData from '../../data/new_data.json'
 
 export default function Home() {
   return (

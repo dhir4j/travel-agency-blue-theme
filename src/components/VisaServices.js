@@ -4,6 +4,18 @@ export default function VisaServices({ visaData }) {
   // Get featured countries (first 6)
   const featuredVisas = visaData.slice(0, 6)
 
+  const getStartingPrice = (visa) => {
+    const options = visa['Visa Pricing Options'] || []
+    if (options.length === 0) return 'Contact Us'
+    return options[0]['Total Amount'] || options[0]['Pay Now Govt Fee'] || 'Contact Us'
+  }
+
+  const getProcessingTime = (visa) => {
+    const options = visa['Visa Pricing Options'] || []
+    if (options.length === 0) return ''
+    return options[0]['Processing Days'] || options[0]['Get on'] || ''
+  }
+
   return (
     <section className="visa-services" id="visa">
       <div className="container">
@@ -26,18 +38,20 @@ export default function VisaServices({ visaData }) {
                     <h3 className="h3 card-title">{visa.Country}</h3>
 
                     <ul className="visa-meta">
-                      <li>
-                        <ion-icon name="time-outline"></ion-icon>
-                        <span>Get in {visa['Get on']}</span>
-                      </li>
+                      {getProcessingTime(visa) && (
+                        <li>
+                          <ion-icon name="time-outline"></ion-icon>
+                          <span>Get in {getProcessingTime(visa)}</span>
+                        </li>
+                      )}
                       <li>
                         <ion-icon name="document-text-outline"></ion-icon>
-                        <span>{visa['Visa Info']['Visa Type'] || 'E-Visa'}</span>
+                        <span>{visa['Visa Info']['Visa Type'] || visa['Visa Info']['Type'] || 'Visa'}</span>
                       </li>
                     </ul>
 
                     <div className="card-footer">
-                      <p className="price">{visa.Price}</p>
+                      <p className="price">{getStartingPrice(visa)}</p>
                       <button className="btn-link">Apply Now →</button>
                     </div>
                   </div>
