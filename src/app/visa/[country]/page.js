@@ -471,12 +471,6 @@ export default function CountryVisaPage({ params }) {
                       <span className="total-price">{formatPrice(grandTotal)}</span>
                     </div>
 
-                    {/* Unlock Lower Price */}
-                    <div className="unlock-price">
-                      <ion-icon name="lock-closed-outline"></ion-icon>
-                      <a href="#">Unlock a lower price</a>
-                    </div>
-
                     {/* Protection Badge */}
                     <div className="protection-badge">
                       <div className="protection-header">
