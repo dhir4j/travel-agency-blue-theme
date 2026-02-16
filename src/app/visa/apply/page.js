@@ -1,17 +1,27 @@
 'use client'
 
 import { useState, useEffect, Suspense } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import GoTop from '@/components/GoTop'
+import { session } from '@/lib/api'
 import visaData from '../../../../data/new_data.json'
 
 function VisaApplicationForm() {
   const searchParams = useSearchParams()
+  const router = useRouter()
   const country = searchParams.get('country')
 
   const visaInfo = visaData.find(visa => visa.Country === country)
+
+  // Auth guard - redirect to login if not signed in
+  useEffect(() => {
+    if (!session.isAuthenticated()) {
+      const returnUrl = `/visa/apply?country=${encodeURIComponent(country || '')}`
+      router.replace(`/auth/login?redirect=${encodeURIComponent(returnUrl)}`)
+    }
+  }, [router, country])
 
   const [formData, setFormData] = useState({
     // Travel Details

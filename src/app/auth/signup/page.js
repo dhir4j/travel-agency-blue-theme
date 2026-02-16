@@ -11,6 +11,7 @@ import GoTop from '@/components/GoTop'
 function SignupForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
+  const redirectUrl = searchParams.get('redirect') || '/profile'
 
   const [formData, setFormData] = useState({
     first_name: '',
@@ -111,7 +112,7 @@ function SignupForm() {
 
       if (data.verified && data.user) {
         session.setUser(data.user)
-        router.push('/profile')
+        router.push(redirectUrl)
       }
     } catch (err) {
       setOtpError(err.message || 'Invalid verification code')
@@ -318,7 +319,7 @@ function SignupForm() {
 
                   <div className="auth-footer">
                     Already have an account?
-                    <Link href="/auth/login"> Login</Link>
+                    <Link href={`/auth/login${redirectUrl !== '/profile' ? `?redirect=${encodeURIComponent(redirectUrl)}` : ''}`}> Login</Link>
                   </div>
                 </div>
               </div>

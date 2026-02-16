@@ -1,16 +1,18 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { notFound } from 'next/navigation'
+import { notFound, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import GoTop from '@/components/GoTop'
+import { session } from '@/lib/api'
 import visaData from '../../../../data/new_data.json'
 
 const US_CATEGORIES = ['Tourism', 'Business', 'Dropbox']
 
 export default function CountryVisaPage({ params }) {
+  const router = useRouter()
   const countrySlug = params.country
   const visaInfo = visaData.find(
     (visa) => visa.Country.toLowerCase().replace(/\s+/g, '-') === countrySlug
@@ -18,6 +20,15 @@ export default function CountryVisaPage({ params }) {
 
   if (!visaInfo) {
     notFound()
+  }
+
+  // Auth-guarded navigation to apply page
+  const handleApply = (applyUrl) => {
+    if (!session.isAuthenticated()) {
+      router.push(`/auth/login?redirect=${encodeURIComponent(applyUrl)}`)
+      return
+    }
+    router.push(applyUrl)
   }
 
   const isUSA = visaInfo.Country === 'United States'
@@ -137,7 +148,7 @@ export default function CountryVisaPage({ params }) {
                     <span>Visa Guaranteed {processingDaysText ? `in ${processingDaysText}` : ''}</span>
                   </div>
                   <div className="hero-cta-wrapper">
-                    <Link href={`/visa/apply?country=${visaInfo.Country}`} className="btn btn-primary btn-hero-cta">Apply Now</Link>
+                    <button onClick={() => handleApply(`/visa/apply?country=${visaInfo.Country}`)} className="btn btn-primary btn-hero-cta">Apply Now</button>
                   </div>
                 </div>
               </div>
@@ -423,12 +434,12 @@ export default function CountryVisaPage({ params }) {
                     </div>
 
                     {/* Start Application Button */}
-                    <Link
-                      href={`/visa/apply?country=${visaInfo.Country}${isUSA ? `&category=${showStudentPricing ? 'Student' : usaCategory}` : ''}&processing=${(currentOption.Type || currentOption['Processing Time'] || 'Standard')}&travellers=${travellers}`}
+                    <button
+                      onClick={() => handleApply(`/visa/apply?country=${visaInfo.Country}${isUSA ? `&category=${showStudentPricing ? 'Student' : usaCategory}` : ''}&processing=${(currentOption.Type || currentOption['Processing Time'] || 'Standard')}&travellers=${travellers}`)}
                       className="btn-start-application"
                     >
                       Start Application
-                    </Link>
+                    </button>
 
                     {/* Payment Breakdown */}
                     <div className="payment-breakdown">

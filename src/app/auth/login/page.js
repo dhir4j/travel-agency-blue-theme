@@ -1,15 +1,17 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, useEffect, Suspense } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { authAPI, session } from '@/lib/api'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import GoTop from '@/components/GoTop'
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const redirectUrl = searchParams.get('redirect') || '/profile'
   const [formData, setFormData] = useState({ email: '', password: '', rememberMe: false })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -19,16 +21,16 @@ export default function LoginPage() {
     const tryAutoLogin = async () => {
       const user = session.getUser()
       if (user) {
-        router.push('/profile')
+        router.push(redirectUrl)
         return
       }
       const restored = await session.tryRestoreSession()
       if (restored) {
-        router.push('/profile')
+        router.push(redirectUrl)
       }
     }
     tryAutoLogin()
-  }, [router])
+  }, [router, redirectUrl])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -42,7 +44,7 @@ export default function LoginPage() {
       if (result.rememberToken) {
         session.setRememberToken(result.rememberToken)
       }
-      router.push('/profile')
+      router.push(redirectUrl)
     } catch (err) {
       setError(err.message || 'Something went wrong')
       setLoading(false)
@@ -146,7 +148,7 @@ export default function LoginPage() {
 
                   <div className="auth-footer">
                     Don&apos;t have an account?
-                    <Link href="/auth/signup"> Create one</Link>
+                    <Link href={`/auth/signup${redirectUrl !== '/profile' ? `?redirect=${encodeURIComponent(redirectUrl)}` : ''}`}> Create one</Link>
                   </div>
                 </div>
               </div>
@@ -162,6 +164,14 @@ export default function LoginPage() {
         ${sharedStyles}
       `}</style>
     </>
+  )
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginForm />
+    </Suspense>
   )
 }
 

@@ -1,11 +1,12 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { notFound } from 'next/navigation'
+import { notFound, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import GoTop from '@/components/GoTop'
+import { session } from '@/lib/api'
 import toursData from '../../../../data/waynex_tours_complete.json'
 import { extractCodeFromSlug, getTourImage } from '@/utils/tourUtils'
 import styles from './tour-detail.module.css'
@@ -27,6 +28,7 @@ function findTourByCode(code) {
 }
 
 export default function TourDetail({ params }) {
+  const router = useRouter()
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   const slug = params.code
@@ -35,6 +37,15 @@ export default function TourDetail({ params }) {
 
   if (!tour) {
     notFound()
+  }
+
+  const handleBook = () => {
+    const bookUrl = `/tours/${slug}/book`
+    if (!session.isAuthenticated()) {
+      router.push(`/auth/login?redirect=${encodeURIComponent(bookUrl)}`)
+      return
+    }
+    router.push(bookUrl)
   }
 
   const validImages = tour.slider_images?.filter(img =>
@@ -238,9 +249,9 @@ export default function TourDetail({ params }) {
                   <span className={styles.priceAmount}>₹{tour.price?.toLocaleString()}</span>
                   <span className={styles.priceSubtext}>per person</span>
                 </div>
-                <Link href={`/tours/${slug}/book`} className={`${styles.ctaButton} ${styles.primaryButton}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <button onClick={handleBook} className={`${styles.ctaButton} ${styles.primaryButton}`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
                   Book Now
-                </Link>
+                </button>
 
                 <div className={styles.quickInfo}>
                   <div className={styles.infoRow}>

@@ -57,7 +57,13 @@ export default function TourBookingPage({ params }) {
     acceptTerms: false
   })
 
+  // Auth guard - redirect to login if not signed in
   useEffect(() => {
+    if (!session.isAuthenticated()) {
+      const returnUrl = `/tours/${slug}/book`
+      router.replace(`/auth/login?redirect=${encodeURIComponent(returnUrl)}`)
+      return
+    }
     const currentUser = session.getUser()
     if (currentUser) {
       setUser(currentUser)
@@ -73,7 +79,7 @@ export default function TourBookingPage({ params }) {
         pincode: currentUser.address?.pincode || '',
       }))
     }
-  }, [])
+  }, [router, slug])
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target
